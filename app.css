@@ -1,0 +1,178 @@
+/* ══════════════════════════════════════════════════════════════════════
+   app.css · IQ+ · tokens + shell + component styles
+   ──────────────────────────────────────────────────────────────────────
+   tokens → :root      shell → #iq-app · #iq-sidebar · #iq-content
+   sidebar → .iq-skill · .iq-dot      lesson → .iq-speedread · .iq-toggle
+   practice → .iq-choice · .iq-feedback      buttons → .iq-btn*
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── tokens ─────────────────────────────────────────────────────────── */
+
+:root {
+  --bg1: #667eea;
+  --bg2: #764ba2;
+  --card: rgba(255, 255, 255, 0.10);
+  --card-2: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.20);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.65);
+  --gold: #ffd700;
+  --ok: #34d399;
+  --no: #fbbf24;
+  --space: 1rem;
+  --radius: 1rem;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+/* ── shell ──────────────────────────────────────────────────────────── */
+
+#iq-app { display: flex; min-height: 100vh; }
+
+#iq-sidebar {
+  width: 16rem;
+  flex-shrink: 0;
+  background: rgba(40, 10, 60, 0.45);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.iq-brand {
+  font-size: 1.4rem;
+  font-weight: 800;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.iq-brand span { font-weight: 400; color: var(--muted); font-size: 1rem; }
+
+#iq-content { flex: 1; padding: 2rem; max-width: 60rem; }
+
+/* ── sidebar nav ────────────────────────────────────────────────────── */
+
+.iq-path { padding: 0.75rem 1rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.iq-set { margin-bottom: 0.5rem; }
+.iq-set-name { padding: 0.4rem 1rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+
+.iq-skill {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.45rem 1rem 0.45rem 1.5rem;
+  color: var(--muted); text-decoration: none; font-size: 0.85rem;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, color 0.15s;
+}
+.iq-skill:hover { background: rgba(255, 255, 255, 0.08); color: var(--text); }
+.iq-skill.iq-active { background: rgba(255, 215, 0, 0.15); color: var(--text); border-left-color: var(--gold); }
+.iq-skill-soon { opacity: 0.55; }
+.iq-soon-tag { font-size: 0.6rem; background: rgba(255,255,255,0.12); padding: 0 0.35rem; border-radius: 0.4rem; }
+
+.iq-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; flex-shrink: 0; background: #9ca3af; }
+.iq-dot-gray   { background: #9ca3af; }
+.iq-dot-yellow { background: #fbbf24; }
+.iq-dot-green  { background: #34d399; }
+.iq-dot-red    { background: #f87171; }
+
+/* ── headings ───────────────────────────────────────────────────────── */
+
+.iq-h1 { font-size: 2rem; font-weight: 800; margin: 0 0 0.25rem; }
+.iq-sub { color: var(--muted); margin: 0 0 1.5rem; }
+
+/* ── cards + lesson ─────────────────────────────────────────────────── */
+
+.iq-card {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.iq-pretest {
+  display: block; text-align: center; text-decoration: none;
+  background: #7c3aed; color: #fff; font-weight: 800; font-size: 1.3rem;
+  padding: 1.25rem; border-radius: var(--radius); margin-bottom: 1.5rem;
+}
+.iq-pretest:hover { background: #6d28d9; }
+
+.iq-core { background: rgba(40, 10, 60, 0.30); border-radius: 0.75rem; padding: 1.25rem; font-size: 1.05rem; }
+.iq-core p { margin: 0 0 0.5rem; }
+
+.iq-toggle {
+  display: block; width: 100%; text-align: left; cursor: pointer;
+  background: rgba(255, 255, 255, 0.10); color: var(--text);
+  border: none; border-radius: 0.6rem; padding: 0.9rem 1rem;
+  font-size: 1.1rem; font-weight: 600; margin-top: 1rem;
+}
+.iq-toggle:hover { background: rgba(255, 255, 255, 0.18); }
+.iq-expand { margin-top: 0.75rem; padding: 1rem; background: var(--card-2); border-radius: 0.6rem; font-size: 0.95rem; }
+.iq-hidden { display: none; }
+
+.iq-box { background: rgba(124, 58, 237, 0.18); border-radius: 0.6rem; padding: 1rem; }
+
+/* ── action buttons ─────────────────────────────────────────────────── */
+
+.iq-actions { display: flex; flex-direction: column; gap: 0.75rem; }
+.iq-btn {
+  display: block; text-align: center; text-decoration: none; cursor: pointer;
+  color: #fff; font-weight: 800; font-size: 1.1rem;
+  padding: 1.1rem; border: none; border-radius: 0.75rem;
+}
+.iq-btn-practice { background: #3b82f6; } .iq-btn-practice:hover { background: #2563eb; }
+.iq-btn-quiz     { background: #10b981; } .iq-btn-quiz:hover     { background: #059669; }
+.iq-btn-test     { background: #8b5cf6; } .iq-btn-test:hover     { background: #7c3aed; }
+
+/* ── practice ───────────────────────────────────────────────────────── */
+
+.iq-hintbar { background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 0.6rem; padding: 0.75rem; margin-bottom: 1rem; font-size: 0.9rem; }
+.iq-prob-num { color: var(--muted); font-size: 0.85rem; margin: 0 0 0.25rem; }
+.iq-prob { font-size: 1.2rem; background: rgba(40, 10, 60, 0.30); border-radius: 0.6rem; padding: 1rem; margin: 0 0 1.25rem; }
+.iq-step-label { color: var(--muted); font-size: 0.8rem; margin: 0 0 0.25rem; }
+.iq-step-prompt { font-size: 1.1rem; font-weight: 600; margin: 0 0 1rem; }
+
+.iq-choices { display: flex; flex-direction: column; gap: 0.6rem; }
+.iq-choice {
+  text-align: left; cursor: pointer; color: var(--text);
+  background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border);
+  border-radius: 0.6rem; padding: 0.9rem 1rem; font-size: 1rem;
+}
+.iq-choice:hover:not(:disabled) { background: rgba(255, 255, 255, 0.16); }
+.iq-choice:disabled { cursor: default; }
+.iq-correct { background: rgba(52, 211, 153, 0.30); border-color: var(--ok); }
+.iq-wrong   { background: rgba(248, 113, 113, 0.25); border-color: #f87171; opacity: 0.7; }
+
+.iq-feedback { margin-top: 1rem; }
+.iq-ok { background: rgba(52, 211, 153, 0.18); border: 1px solid var(--ok); border-radius: 0.6rem; padding: 0.9rem; }
+.iq-no { background: rgba(251, 191, 36, 0.15); border: 1px solid var(--no); border-radius: 0.6rem; padding: 0.9rem; }
+.iq-work { margin-top: 0.6rem; font-style: italic; color: var(--muted); }
+.iq-next { margin-top: 1rem; cursor: pointer; background: #3b82f6; color: #fff; border: none; border-radius: 0.6rem; padding: 0.8rem 1.5rem; font-weight: 700; font-size: 1rem; }
+.iq-next:hover { background: #2563eb; }
+.iq-back { display: inline-block; margin-top: 0.5rem; color: var(--muted); text-decoration: none; }
+.iq-back:hover { color: var(--text); }
+
+/* ── done / coming-soon ─────────────────────────────────────────────── */
+
+.iq-done, .iq-soon { text-align: center; }
+.iq-done-emoji { font-size: 3rem; margin: 0; }
+.iq-soon code { background: rgba(0,0,0,0.3); padding: 0.1rem 0.4rem; border-radius: 0.3rem; }
+
+/* ── small screens: sidebar above content ──────────────────────────── */
+
+@media (max-width: 720px) {
+  #iq-app { flex-direction: column; }
+  #iq-sidebar { width: 100%; height: auto; position: relative; max-height: 40vh; }
+  #iq-content { padding: 1.25rem; }
+}

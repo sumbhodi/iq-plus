@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+  index.html · IQ+ · persistent shell
+  ──────────────────────────────────────────────────────────────────────
+  The one page that's always loaded: sidebar nav + content mount. Everything
+  else swaps into #iq-content via router.js. Four layers, loaded in order:
+    data (curriculum) → progress → templates → tutor → router (boots last)
+  Adding a skill never touches this file — drop a data/skill-<id>.js.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IQ+ · Math Calc</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <div id="iq-app">
+    <aside id="iq-sidebar">
+      <div class="iq-brand">IQ+ <span>Math Calc</span></div>
+      <nav id="iq-sidebar-nav"></nav>
+    </aside>
+    <main id="iq-content"></main>
+  </div>
+
+  <!-- four layers, in dependency order -->
+  <script src="data/curriculum.js"></script>
+  <script src="progress.js"></script>
+  <script src="templates/lesson.js"></script>
+  <script src="templates/practice.js"></script>
+  <script src="tutor.js"></script>
+  <script src="router.js"></script>
+</body>
+</html>
