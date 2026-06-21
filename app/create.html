@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile | IQ+</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .avatar-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+        
+        /* Placeholder for future welcome animation */
+        .welcome-container {
+            /* animation: fadeIn 0.5s ease-in; */
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    
+    <div class="max-w-md w-full welcome-container">
+        
+        <!-- Create Profile Card -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 mb-8">
+            
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-white mb-2">Welcome to IQ+!</h1>
+                <p class="text-purple-100">Let's set up your profile</p>
+            </div>
+            
+            <!-- Avatar Section -->
+            <div class="flex flex-col items-center mb-6">
+                <img id="avatar-preview" 
+                     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='%23a855f7'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='48' fill='white'%3E👤%3C/text%3E%3C/svg%3E"
+                     alt="Avatar preview"
+                     class="avatar-preview mb-4">
+                
+                <label for="avatar-upload" class="cursor-pointer bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-xl transition text-sm font-semibold" aria-label="Upload avatar image">
+                    <i class="fa-solid fa-camera mr-2" aria-hidden="true"></i>
+                    Upload Photo
+                </label>
+                <input type="file" 
+                       id="avatar-upload" 
+                       accept="image/*" 
+                       class="hidden"
+                       aria-label="Choose avatar image file">
+                
+                <p class="text-white/60 text-xs mt-2">Optional - You can change this later</p>
+            </div>
+            
+            <!-- Username Input -->
+            <div class="mb-6">
+                <label for="username-input" class="block text-white font-semibold mb-2">
+                    Username *
+                </label>
+                <input type="text" 
+                       id="username-input" 
+                       placeholder="Enter your username"
+                       maxlength="20"
+                       class="w-full px-4 py-3 rounded-xl bg-white/20 border-2 border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-white/60 transition"
+                       aria-label="Enter username"
+                       aria-required="true">
+                <p class="text-white/60 text-xs mt-1">Must be unique - this is how others will find you</p>
+            </div>
+            
+            <!-- Optional Profile Section (Collapsible) -->
+            <div class="mb-6">
+                <button type="button" 
+                        id="optional-toggle" 
+                        onclick="toggleOptionalFields()"
+                        class="w-full text-left text-white/80 hover:text-white font-semibold py-2 flex items-center justify-between transition"
+                        aria-expanded="false"
+                        aria-controls="optional-fields">
+                    <span>✨ Tell us more about you (optional)</span>
+                    <i id="optional-icon" class="fa-solid fa-chevron-down transition-transform" aria-hidden="true"></i>
+                </button>
+                
+                <div id="optional-fields" class="hidden mt-4 space-y-4 border-t border-white/20 pt-4">
+                    
+                    <!-- Preferred Name -->
+                    <div>
+                        <label for="preferred-name" class="block text-white/90 text-sm font-semibold mb-2">
+                            I like to be addressed as
+                        </label>
+                        <input type="text" 
+                               id="preferred-name" 
+                               placeholder="Preferred name"
+                               maxlength="50"
+                               class="w-full px-4 py-2 rounded-lg bg-white/10 border-2 border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white/50 transition text-sm"
+                               aria-label="Preferred name">
+                    </div>
+                    
+                    <!-- Pronouns -->
+                    <div>
+                        <label class="block text-white/90 text-sm font-semibold mb-2">
+                            My pronouns are
+                        </label>
+                        <div class="space-y-2 bg-white/5 p-3 rounded-lg">
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="pronouns" value="he/him" class="mr-2 rounded accent-purple-500" aria-label="he/him">
+                                he/him
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="pronouns" value="she/her" class="mr-2 rounded accent-purple-500" aria-label="she/her">
+                                she/her
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="pronouns" value="they/them" class="mr-2 rounded accent-purple-500" aria-label="they/them">
+                                they/them
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="pronouns" value="he/they" class="mr-2 rounded accent-purple-500" aria-label="he/they">
+                                he/they
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="pronouns" value="she/they" class="mr-2 rounded accent-purple-500" aria-label="she/they">
+                                she/they
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="pronouns" value="any" class="mr-2 rounded accent-purple-500" aria-label="any pronouns">
+                                any pronouns
+                            </label>
+                        </div>
+                        <input type="text" 
+                               id="pronouns-custom" 
+                               placeholder="Or write your own"
+                               maxlength="30"
+                               class="w-full px-4 py-2 rounded-lg bg-white/10 border-2 border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white/50 transition text-sm mt-2"
+                               aria-label="Custom pronouns">
+                    </div>
+                    
+                    <!-- I Present As -->
+                    <div>
+                        <label class="block text-white/90 text-sm font-semibold mb-2">
+                            I present as
+                        </label>
+                        <div class="space-y-2 max-h-48 overflow-y-auto bg-white/5 p-3 rounded-lg">
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="neurotypical" class="mr-2 rounded accent-purple-500" aria-label="Neurotypical">
+                                Neurotypical
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="neurodivergent" class="mr-2 rounded accent-purple-500" aria-label="Neurodivergent">
+                                Neurodivergent (ADHD, Autism, etc.)
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="cisgender" class="mr-2 rounded accent-purple-500" aria-label="Cisgender">
+                                Cisgender
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="transgender" class="mr-2 rounded accent-purple-500" aria-label="Transgender">
+                                Transgender
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="non-binary" class="mr-2 rounded accent-purple-500" aria-label="Non-binary">
+                                Non-binary
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="genderfluid" class="mr-2 rounded accent-purple-500" aria-label="Genderfluid">
+                                Genderfluid
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="agender" class="mr-2 rounded accent-purple-500" aria-label="Agender">
+                                Agender
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="two-spirit" class="mr-2 rounded accent-purple-500" aria-label="Two-Spirit">
+                                Two-Spirit
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="presentation" value="questioning" class="mr-2 rounded accent-purple-500" aria-label="Questioning">
+                                Questioning
+                            </label>
+                        </div>
+                        <input type="text" 
+                               id="presentation-custom" 
+                               placeholder="Or write your own (comma-separated)"
+                               maxlength="100"
+                               class="w-full px-4 py-2 rounded-lg bg-white/10 border-2 border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white/50 transition text-sm mt-2"
+                               aria-label="Custom presentation">
+                    </div>
+                    
+                    <!-- My Ancestors Were -->
+                    <div>
+                        <label for="ancestry" class="block text-white/90 text-sm font-semibold mb-2">
+                            My ancestors were
+                        </label>
+                        <div class="space-y-2 mb-2 bg-white/5 p-3 rounded-lg">
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="african" class="mr-2 rounded accent-purple-500" aria-label="African">
+                                African
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="asian" class="mr-2 rounded accent-purple-500" aria-label="Asian">
+                                Asian
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="european" class="mr-2 rounded accent-purple-500" aria-label="European">
+                                European
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="indigenous" class="mr-2 rounded accent-purple-500" aria-label="Indigenous/Native">
+                                Indigenous/Native
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="pacific-islander" class="mr-2 rounded accent-purple-500" aria-label="Pacific Islander">
+                                Pacific Islander
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="middle-eastern" class="mr-2 rounded accent-purple-500" aria-label="Middle Eastern">
+                                Middle Eastern
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="latin-american" class="mr-2 rounded accent-purple-500" aria-label="Latin American">
+                                Latin American
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="mixed" class="mr-2 rounded accent-purple-500" aria-label="Mixed Heritage">
+                                Mixed Heritage
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="stardust" class="mr-2 rounded accent-purple-500" aria-label="Stardust (we're all made of it)">
+                                ✨ Stardust (we're all made of it)
+                            </label>
+                            <label class="flex items-center text-white text-sm hover:text-purple-200 cursor-pointer">
+                                <input type="checkbox" name="ancestry" value="lavender" class="mr-2 rounded accent-purple-500" aria-label="Lavender">
+                                💜 Lavender
+                            </label>
+                        </div>
+                        <textarea id="ancestry-text" 
+                                  placeholder="Tell us more about your heritage (500 characters)"
+                                  maxlength="500"
+                                  rows="3"
+                                  class="w-full px-4 py-2 rounded-lg bg-white/10 border-2 border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white/50 transition text-sm resize-none"
+                                  aria-label="Additional ancestry information"></textarea>
+                        <p class="text-white/50 text-xs mt-1"><span id="ancestry-count">0</span>/500</p>
+                    </div>
+                    
+                    <!-- Why Are You Here -->
+                    <div>
+                        <label for="why-here" class="block text-white/90 text-sm font-semibold mb-2">
+                            Why are you here?
+                        </label>
+                        <textarea id="why-here" 
+                                  placeholder="Share your story, goals, or dreams... (5000 characters)"
+                                  maxlength="5000"
+                                  rows="5"
+                                  class="w-full px-4 py-2 rounded-lg bg-white/10 border-2 border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white/50 transition text-sm resize-none"
+                                  aria-label="Why you're joining IQ+"></textarea>
+                        <p class="text-white/50 text-xs mt-1"><span id="why-count">0</span>/5000</p>
+                    </div>
+                    
+                    <p class="text-white/60 text-xs italic">
+                        💜 All of this is optional and private. We don't sell your data. Ever.
+                    </p>
+                    
+                </div>
+            </div>
+            
+            <!-- Continue Button -->
+            <button id="continue-btn" 
+                    onclick="createProfile()" 
+                    class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-4 rounded-xl transition shadow-lg text-lg"
+                    aria-label="Continue to dashboard">
+                Continue →
+            </button>
+            
+            <!-- Error Message -->
+            <div id="error-message" class="hidden mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-xl text-white text-sm" role="alert" aria-live="polite">
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center" role="contentinfo">
+            <div class="text-sm text-purple-200 space-y-2">
+                <p>Version 1.0.0 (Alpha) | Built with ❤️ for learners</p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="#" onclick="alert('Privacy Policy coming soon'); return false;" class="hover:text-white underline">Privacy Policy</a>
+                    <span aria-hidden="true">•</span>
+                    <a href="#" onclick="alert('Terms of Service coming soon'); return false;" class="hover:text-white underline">Terms of Service</a>
+                    <span aria-hidden="true">•</span>
+                    <a href="#" onclick="alert('Contact coming soon'); return false;" class="hover:text-white underline">Contact</a>
+                </div>
+                <p class="text-xs mt-4">© 2025 IQ+ Education. Student data protected under FERPA guidelines.</p>
+            </div>
+        </footer>
+        
+    </div>
+
+    <script>
+        // Non-module functions (need global scope for onclick)
+        function toggleOptionalFields() {
+            const fields = document.getElementById('optional-fields');
+            const icon = document.getElementById('optional-icon');
+            const button = document.getElementById('optional-toggle');
+            const isHidden = fields.classList.contains('hidden');
+            
+            if (isHidden) {
+                fields.classList.remove('hidden');
+                icon.classList.add('fa-rotate-180');
+                button.setAttribute('aria-expanded', 'true');
+            } else {
+                fields.classList.add('hidden');
+                icon.classList.remove('fa-rotate-180');
+                button.setAttribute('aria-expanded', 'false');
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { auth, db } from './firebase_config.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+        const storage = getStorage();
+        let currentUser = null;
+        let uploadedAvatarFile = null;
+        let uploadedAvatarURL = null;
+
+        // Character counters
+        document.getElementById('ancestry-text')?.addEventListener('input', (e) => {
+            document.getElementById('ancestry-count').textContent = e.target.value.length;
+        });
+
+        document.getElementById('why-here')?.addEventListener('input', (e) => {
+            document.getElementById('why-count').textContent = e.target.value.length;
+        });
+
+        // Check auth state
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                // Not signed in, redirect to sign in
+                window.location.href = 'sign.html';
+                return;
+            }
+            
+            currentUser = user;
+            
+            // Check if profile already exists
+            const userRef = doc(db, "users", user.uid);
+            const userSnap = await getDoc(userRef);
+            
+            if (userSnap.exists()) {
+                // Profile exists, go to dashboard
+                window.location.href = 'dashboard.html';
+                return;
+            }
+            
+            // Pre-fill with Google/Apple avatar if available
+            if (user.photoURL) {
+                document.getElementById('avatar-preview').src = user.photoURL;
+            }
+            
+            // Pre-fill username with display name or email prefix
+            if (user.displayName) {
+                document.getElementById('username-input').value = user.displayName;
+            } else if (user.email) {
+                document.getElementById('username-input').value = user.email.split('@')[0];
+            }
+        });
+
+        // Handle avatar upload
+        document.getElementById('avatar-upload').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            // Validate file size (max 2MB)
+            if (file.size > 2 * 1024 * 1024) {
+                showError('Image too large. Please choose a file under 2MB.');
+                return;
+            }
+            
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
+                showError('Please choose an image file.');
+                return;
+            }
+            
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('avatar-preview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+            
+            // Store file for upload
+            uploadedAvatarFile = file;
+        });
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+            setTimeout(() => errorDiv.classList.add('hidden'), 5000);
+        }
+
+        // Create profile
+        window.createProfile = async function() {
+            if (!currentUser) {
+                showError('Not signed in. Redirecting...');
+                setTimeout(() => window.location.href = 'sign.html', 1000);
+                return;
+            }
+            
+            const username = document.getElementById('username-input').value.trim();
+            
+            if (!username) {
+                showError('Please enter a username');
+                return;
+            }
+            
+            if (username.length < 3) {
+                showError('Username must be at least 3 characters');
+                return;
+            }
+            
+            // Disable button during creation
+            const btn = document.getElementById('continue-btn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Creating profile...';
+            
+            try {
+                // Check username uniqueness
+                const { collection, query, where, getDocs } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+                const usernameQuery = query(
+                    collection(db, "usernames"), 
+                    where("username_lower", "==", username.toLowerCase())
+                );
+                const usernameSnap = await getDocs(usernameQuery);
+                
+                if (!usernameSnap.empty) {
+                    showError("Username already taken. Please choose another.");
+                    btn.disabled = false;
+                    btn.innerHTML = 'Continue →';
+                    return;
+                }
+                
+                let avatarURL = currentUser.photoURL || null;
+                
+                // Upload custom avatar if provided
+                if (uploadedAvatarFile) {
+                    const storageRef = ref(storage, `avatars/${currentUser.uid}`);
+                    await uploadBytes(storageRef, uploadedAvatarFile);
+                    avatarURL = await getDownloadURL(storageRef);
+                }
+                
+                // Collect optional profile data
+                const pronounChecks = Array.from(document.querySelectorAll('input[name="pronouns"]:checked'))
+                    .map(cb => cb.value);
+                const pronounsCustom = document.getElementById('pronouns-custom').value.trim();
+                if (pronounsCustom) {
+                    pronounChecks.push(...pronounsCustom.split(',').map(s => s.trim()));
+                }
+                const pronouns = pronounChecks.length > 0 ? pronounChecks : null;
+                
+                const presentationChecks = Array.from(document.querySelectorAll('input[name="presentation"]:checked'))
+                    .map(cb => cb.value);
+                const presentationCustom = document.getElementById('presentation-custom').value.trim();
+                if (presentationCustom) {
+                    presentationChecks.push(...presentationCustom.split(',').map(s => s.trim()));
+                }
+                
+                const ancestryChecks = Array.from(document.querySelectorAll('input[name="ancestry"]:checked'))
+                    .map(cb => cb.value);
+                const ancestryText = document.getElementById('ancestry-text').value.trim();
+                
+                const optionalProfile = {
+                    preferred_name: document.getElementById('preferred-name').value.trim() || null,
+                    pronouns: pronouns || null,
+                    presentation: presentationChecks.length > 0 ? presentationChecks : null,
+                    ancestry: {
+                        categories: ancestryChecks.length > 0 ? ancestryChecks : null,
+                        description: ancestryText || null
+                    },
+                    why_here: document.getElementById('why-here').value.trim() || null
+                };
+                
+                // Create user profile in Firestore
+                await setDoc(doc(db, "users", currentUser.uid), {
+                    uid: currentUser.uid,
+                    email: currentUser.email,
+                    username: username,
+                    avatar: avatarURL,
+                    created_at: new Date().toISOString(),
+                    curriculum: {},
+                    progress: {},
+                    profile: optionalProfile
+                });
+                
+                // Reserve username
+                await setDoc(doc(db, "usernames", username.toLowerCase()), {
+                    uid: currentUser.uid,
+                    username: username,
+                    created_at: new Date().toISOString()
+                });
+                
+                console.log('✅ Profile created successfully');
+                
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+                
+            } catch (error) {
+                console.error('❌ Profile creation error:', error);
+                showError('Failed to create profile. Please try again.');
+                btn.disabled = false;
+                btn.innerHTML = 'Continue →';
+            }
+        };
+
+        // Allow Enter key to submit
+        document.getElementById('username-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                createProfile();
+            }
+        });
+
+        console.log('🎨 Create profile page loaded');
+    </script>
+
+</body>
+</html>

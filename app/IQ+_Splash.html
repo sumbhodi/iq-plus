@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>IQ+ | Learn Smarter, Not Harder</title>
+    <meta name="title" content="IQ+ | Learn Smarter, Not Harder">
+    <meta name="description" content="Master college-level academics with interactive Oregon Trail-style learning. Math, Science, Languages, and more. Built for speed and retention.">
+    <meta name="keywords" content="online learning, math tutor, college prep, test prep, interactive learning, adaptive learning, IQ+">
+    <meta name="author" content="IQ+ Education">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://iqplus.app/">
+    <meta property="og:title" content="IQ+ | Learn Smarter, Not Harder">
+    <meta property="og:description" content="Master college-level academics with interactive Oregon Trail-style learning. Math, Science, Languages, and more.">
+    <meta property="og:image" content="https://iqplus.app/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://iqplus.app/">
+    <meta property="twitter:title" content="IQ+ | Learn Smarter, Not Harder">
+    <meta property="twitter:description" content="Master college-level academics with interactive Oregon Trail-style learning.">
+    <meta property="twitter:image" content="https://iqplus.app/og-image.png">
+    
+    <!-- Favicon placeholder -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4" role="main">
+    
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen" class="max-w-6xl w-full">
+        <header class="text-center mb-12 floating">
+            <h1 class="text-7xl font-bold text-white mb-4">IQ+</h1>
+            <p class="text-2xl text-purple-100">Learn Smarter, Not Harder</p>
+        </header>
+        
+        <main class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 mb-8">
+            <div class="flex flex-col gap-4 max-w-md mx-auto">
+                
+                <!-- What is IQ+? Button -->
+                <button onclick="window.location.href='what.html'" class="bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-xl font-semibold backdrop-blur transition text-lg border-2 border-white/30">
+                    ❓ What is IQ+?
+                </button>
+                
+                <!-- Sign In Button -->
+                <button onclick="window.location.href='sign.html'" class="bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-xl font-semibold backdrop-blur transition text-lg border-2 border-white/30">
+                    🔐 Sign In
+                </button>
+                
+                <!-- Start Learning Button (Main CTA) -->
+                <button onclick="window.location.href='sign.html'" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white px-8 py-6 rounded-xl font-bold text-xl shadow-2xl transform hover:scale-105 transition-all">
+                    Start Learning Math →
+                </button>
+
+                <!-- Try a lesson — no sign-up (the instant-demo door) -->
+                <button onclick="window.location.href='https://sumbhodi.github.io/iq-plus/'" class="bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-xl font-semibold backdrop-blur transition text-lg border-2 border-white/30">
+                    🎯 Try a lesson — no sign-up →
+                </button>
+
+                <p class="text-center text-white/70 text-sm mt-2">
+                    Test Prep
+                </p>
+                
+            </div>
+        </main>
+        
+        <footer class="text-center mt-8">
+            <div class="text-sm text-purple-200 space-y-2">
+                <p>Version 1.0.0 (Alpha) | Built with ❤️ for learners</p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="privacy.html" class="hover:text-white underline">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="tos.html" class="hover:text-white underline">Terms of Service</a>
+                    <span>•</span>
+                    <a href="contact.html" class="hover:text-white underline">Contact</a>
+                </div>
+                <p class="text-xs mt-4">© 2025 IQ+ Education. Student data protected under FERPA guidelines.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- MATH LEVEL SELECT SCREEN -->
+    <div id="math-levels" class="max-w-6xl w-full hidden">
+        <div class="mb-8">
+            <button onclick="backToSplash()" class="text-white hover:text-purple-200 flex items-center gap-2 mb-6 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Subjects</span>
+            </button>
+            
+            <div class="text-center mb-8">
+                <i class="fa-solid fa-calculator text-6xl text-white mb-4 floating"></i>
+                <h2 class="text-5xl font-bold text-white mb-2">Mathematics</h2>
+                <p class="text-xl text-purple-100">Choose Your Level</p>
+            </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- LEVEL 100 -->
+                <div class="level-badge bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-6 shadow-xl cursor-pointer" onclick="startLevel(100)">
+                    <div class="text-white">
+                        <div class="text-5xl font-bold mb-2">100</div>
+                        <h3 class="text-xl font-bold mb-2">Foundations</h3>
+                        <p class="text-sm opacity-90 mb-4">Math basics → Pre-Algebra</p>
+                        <div class="flex justify-between items-center text-xs">
+                            <span>38 Lessons</span>
+                            <span>~19 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LEVEL 200 -->
+                <div class="level-badge bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl p-6 shadow-xl cursor-pointer" onclick="startLevel(200)">
+                    <div class="text-white">
+                        <div class="text-5xl font-bold mb-2">200</div>
+                        <h3 class="text-xl font-bold mb-2">Elementary Algebra</h3>
+                        <p class="text-sm opacity-90 mb-4">MATH 0990 Ready</p>
+                        <div class="flex justify-between items-center text-xs">
+                            <span>52 Lessons</span>
+                            <span>~26 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LEVEL 300 -->
+                <div class="level-badge bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl p-6 shadow-xl cursor-pointer" onclick="startLevel(300)">
+                    <div class="text-white">
+                        <div class="text-5xl font-bold mb-2">300</div>
+                        <h3 class="text-xl font-bold mb-2">Intermediate Algebra</h3>
+                        <p class="text-sm opacity-90 mb-4">MATH 1010 Ready</p>
+                        <div class="flex justify-between items-center text-xs">
+                            <span>43 Lessons</span>
+                            <span>~22 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LEVEL 400 -->
+                <div class="level-badge bg-gradient-to-br from-purple-400 to-pink-600 rounded-2xl p-6 shadow-xl cursor-pointer" onclick="startLevel(400)">
+                    <div class="text-white">
+                        <div class="text-5xl font-bold mb-2">400</div>
+                        <h3 class="text-xl font-bold mb-2">College Algebra</h3>
+                        <p class="text-sm opacity-90 mb-4">MATH 1050 Ready</p>
+                        <div class="flex justify-between items-center text-xs">
+                            <span>46 Lessons</span>
+                            <span>~23 Hours</span>
+                        </div>
+                        <div class="mt-3 bg-white/20 px-2 py-1 rounded text-xs font-semibold">
+                            ✅ COMPLETE
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LEVEL 500 -->
+                <div class="level-badge bg-gradient-to-br from-red-400 to-rose-600 rounded-2xl p-6 shadow-xl cursor-pointer" onclick="startLevel(500)">
+                    <div class="text-white">
+                        <div class="text-5xl font-bold mb-2">500</div>
+                        <h3 class="text-xl font-bold mb-2">Trigonometry</h3>
+                        <p class="text-sm opacity-90 mb-4">MATH 1060 Ready</p>
+                        <div class="flex justify-between items-center text-xs">
+                            <span>51 Lessons</span>
+                            <span>~26 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LEVEL 600 -->
+                <div class="level-badge bg-gradient-to-br from-cyan-400 to-blue-700 rounded-2xl p-6 shadow-xl cursor-pointer" onclick="startLevel(600)">
+                    <div class="text-white">
+                        <div class="text-5xl font-bold mb-2">600</div>
+                        <h3 class="text-xl font-bold mb-2">Calculus Prep</h3>
+                        <p class="text-sm opacity-90 mb-4">MATH 1210 Ready</p>
+                        <div class="flex justify-between items-center text-xs">
+                            <span>39 Lessons</span>
+                            <span>~20 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="mt-8 text-center">
+                <p class="text-white text-sm mb-4">Not sure where to start?</p>
+                <button onclick="takePlacementTest()" class="bg-white text-purple-600 px-6 py-3 rounded-xl font-bold hover:bg-purple-50 transition">
+                    📊 Take Placement Test
+                </button>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <button onclick="showLogin()" class="text-white/60 hover:text-white text-sm transition">
+                Sign in to save your progress
+            </button>
+        </div>
+    </div>
+    
+    <!-- LOGIN MODAL (Placeholder) -->
+    <div id="login-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50" onclick="closeModal(event, 'login-modal')">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl" onclick="event.stopPropagation()">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">Welcome Back</h3>
+                <p class="text-slate-600 text-sm">Sign in to save your progress</p>
+            </div>
+            
+            <div class="space-y-4 mb-6">
+                <input type="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-purple-500 transition" aria-label="Email address">
+                <input type="password" placeholder="Password" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-purple-500 transition" aria-label="Password">
+            </div>
+            
+            <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-xl font-bold hover:shadow-lg transition mb-3">
+                Sign In
+            </button>
+            
+            <button onclick="closeLogin()" class="w-full bg-slate-100 text-slate-700 py-3 rounded-xl font-semibold hover:bg-slate-200 transition">
+                Continue Without Account
+            </button>
+            
+            <p class="text-center text-sm text-slate-600 mt-4">
+                Don't have an account? <a href="#" class="text-purple-600 font-semibold">Create one</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- ABOUT MODAL -->
+    <div id="about-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50" onclick="closeModal(event, 'about-modal')">
+        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <div class="mb-6">
+                <h3 class="text-3xl font-bold text-purple-600 mb-4">What is IQ+?</h3>
+                <p class="text-slate-700 text-lg leading-relaxed mb-4">
+                    IQ+ uses <strong>Oregon Trail-style learning</strong> to teach college-level academics at lightning speed.
+                </p>
+            </div>
+            
+            <div class="space-y-6 text-slate-700">
+                <section>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">🎮 How It Works</h4>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Every problem is interactive - click to test your thinking</li>
+                        <li>Try again when you get it wrong (learning, not testing)</li>
+                        <li>Process of elimination builds pattern recognition</li>
+                        <li>Instant feedback = faster neural pathways</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">🧠 Why It Increases IQ</h4>
+                    <p class="mb-2">
+                        IQ+ doesn't just teach facts - it trains your brain to <em>learn efficiently</em>.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li><strong>Meta-learning:</strong> Learn how to learn</li>
+                        <li><strong>Pattern matching:</strong> Recognize problem structures</li>
+                        <li><strong>Adaptive thinking:</strong> Test hypotheses in real-time</li>
+                        <li><strong>Mistake analysis:</strong> Understand why answers are wrong</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">⚡ The Speed Advantage</h4>
+                    <p class="mb-2">
+                        Traditional education: <strong>7,670 hours</strong> (K-12)
+                    </p>
+                    <p class="mb-2">
+                        IQ+ Method: <strong>~135 hours</strong> (all 269 lessons)
+                    </p>
+                    <p class="font-bold text-purple-600">
+                        57× faster than traditional learning
+                    </p>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">🎯 Built for Real Results</h4>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Pass college placement tests</li>
+                        <li>Skip remedial courses (save $6K-$13K)</li>
+                        <li>Ace your Gen Ed requirements</li>
+                        <li>Build confidence in STEM fields</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">🔬 No AI Hallucinations</h4>
+                    <p>
+                        Every lesson is <strong>manually curated</strong> by educators. When you see "Level 400 Complete" - it's real, tested content. No auto-generated nonsense.
+                    </p>
+                </section>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-slate-200">
+                <button onclick="closeAbout()" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold hover:bg-purple-700 transition">
+                    Got It - Let's Learn!
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PRIVACY POLICY MODAL (Placeholder) -->
+    <div id="privacy-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50" onclick="closeModal(event, 'privacy-modal')">
+        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <h3 class="text-3xl font-bold text-slate-800 mb-4">Privacy Policy</h3>
+            <div class="text-slate-700 space-y-4">
+                <p><strong>Last Updated:</strong> January 2025</p>
+                
+                <section>
+                    <h4 class="text-xl font-bold mb-2">What We Collect</h4>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Progress data (lessons completed, quiz scores)</li>
+                        <li>Time spent learning (for analytics)</li>
+                        <li>Account information (email, name if provided)</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold mb-2">What We DON'T Collect</h4>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Social Security Numbers</li>
+                        <li>Credit card data (processed by Stripe)</li>
+                        <li>Browsing history outside IQ+</li>
+                        <li>Biometric data</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold mb-2">FERPA Compliance</h4>
+                    <p>Student education records are protected under FERPA guidelines. We do not share individual student data with third parties without consent.</p>
+                </section>
+                
+                <p class="text-sm text-slate-500 italic mt-6">
+                    Full policy coming soon. For questions: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5e2e2c37283f3d271e372f2e322b2d703f2e2e">[email&#160;protected]</a>
+                </p>
+            </div>
+            
+            <button onclick="closePrivacy()" class="mt-6 w-full bg-slate-200 text-slate-700 py-3 rounded-xl font-semibold hover:bg-slate-300 transition">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <!-- TERMS OF SERVICE MODAL (Placeholder) -->
+    <div id="terms-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50" onclick="closeModal(event, 'terms-modal')">
+        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <h3 class="text-3xl font-bold text-slate-800 mb-4">Terms of Service</h3>
+            <div class="text-slate-700 space-y-4">
+                <p><strong>Last Updated:</strong> January 2025</p>
+                
+                <section>
+                    <h4 class="text-xl font-bold mb-2">Usage Rights</h4>
+                    <p>You may use IQ+ for personal educational purposes. Institutional licenses available for schools.</p>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold mb-2">Account Responsibility</h4>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>You are responsible for maintaining account security</li>
+                        <li>Do not share accounts across multiple users</li>
+                        <li>Report any security breaches immediately</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold mb-2">Content Accuracy</h4>
+                    <p>All content is manually curated and reviewed. If you find errors, please report them via the contact form.</p>
+                </section>
+                
+                <section>
+                    <h4 class="text-xl font-bold mb-2">Refund Policy</h4>
+                    <p>Money-back guarantee within 30 days if you're not satisfied. No questions asked.</p>
+                </section>
+                
+                <p class="text-sm text-slate-500 italic mt-6">
+                    Full terms coming soon. For questions: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9df1f8fafcf1ddf4ecedf1e8eeb3fceded">[email&#160;protected]</a>
+                </p>
+            </div>
+            
+            <button onclick="closeTerms()" class="mt-6 w-full bg-slate-200 text-slate-700 py-3 rounded-xl font-semibold hover:bg-slate-300 transition">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <!-- CONTACT MODAL (Placeholder) -->
+    <div id="contact-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50" onclick="closeModal(event, 'contact-modal')">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl" onclick="event.stopPropagation()">
+            <h3 class="text-3xl font-bold text-slate-800 mb-4">Contact Us</h3>
+            <div class="text-slate-700 space-y-4">
+                <p>Have questions? We'd love to hear from you.</p>
+                
+                <div class="space-y-3">
+                    <div>
+                        <strong>General Inquiries:</strong><br>
+                        <a href="/cdn-cgi/l/email-protection#4c24292020230c253d3c20393f622d3c3c" class="text-purple-600 hover:underline"><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29db4acadb1a8aef3bcadad">[email&#160;protected]</span></a>
+                    </div>
+                    
+                    <div>
+                        <strong>Support:</strong><br>
+                        <a href="/cdn-cgi/l/email-protection#1665636666796462567f67667a636538776666" class="text-purple-600 hover:underline"><span class="__cf_email__" data-cfemail="4c3f393c3c233e380c253d3c20393f622d3c3c">[email&#160;protected]</span></a>
+                    </div>
+                    
+                    <div>
+                        <strong>Institutional Licensing:</strong><br>
+                        <a href="/cdn-cgi/l/email-protection#e09383888f8f8c93a08991908c9593ce819090" class="text-purple-600 hover:underline"><span class="__cf_email__" data-cfemail="2e5d4d464141425d6e475f5e425b5d004f5e5e">[email&#160;protected]</span></a>
+                    </div>
+                </div>
+                
+                <p class="text-sm text-slate-500 italic mt-6">
+                    Response time: Within 24 hours
+                </p>
+            </div>
+            
+            <button onclick="closeContact()" class="mt-6 w-full bg-slate-200 text-slate-700 py-3 rounded-xl font-semibold hover:bg-slate-300 transition">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Modal Management
+        function showAbout() {
+            document.getElementById('about-modal').classList.remove('hidden');
+        }
+        
+        function closeAbout() {
+            document.getElementById('about-modal').classList.add('hidden');
+        }
+        
+        function showPrivacy() {
+            document.getElementById('privacy-modal').classList.remove('hidden');
+        }
+        
+        function closePrivacy() {
+            document.getElementById('privacy-modal').classList.add('hidden');
+        }
+        
+        function showTerms() {
+            document.getElementById('terms-modal').classList.remove('hidden');
+        }
+        
+        function closeTerms() {
+            document.getElementById('terms-modal').classList.add('hidden');
+        }
+        
+        function showContact() {
+            document.getElementById('contact-modal').classList.remove('hidden');
+        }
+        
+        function closeContact() {
+            document.getElementById('contact-modal').classList.add('hidden');
+        }
+        
+        function showLogin() {
+            document.getElementById('login-modal').classList.remove('hidden');
+        }
+        
+        function closeLogin() {
+            document.getElementById('login-modal').classList.add('hidden');
+        }
+        
+        function closeModal(event, modalId) {
+            if (event.target.id === modalId) {
+                document.getElementById(modalId).classList.add('hidden');
+            }
+        }
+        
+        // Navigation
+        function chooseMath() {
+            document.getElementById('splash-screen').classList.add('hidden');
+            document.getElementById('math-levels').classList.remove('hidden');
+        }
+        
+        function backToSplash() {
+            document.getElementById('math-levels').classList.add('hidden');
+            document.getElementById('splash-screen').classList.remove('hidden');
+        }
+        
+        function startLevel(level) {
+            // TODO: Route to actual lesson interface
+            // For now, open Math_Tutor_Test.html if level 400
+            if (level === 400) {
+                window.location.href = 'Math_Tutor_Test.html';
+            } else {
+                alert(`Level ${level} coming soon! Building Level 400 first.`);
+            }
+        }
+        
+        function takePlacementTest() {
+            alert('Placement test coming soon! For now, try Level 400 if you know Algebra I/II.');
+        }
+        
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            // ESC to close modals
+            if (e.key === 'Escape') {
+                ['login-modal', 'about-modal', 'privacy-modal', 'terms-modal', 'contact-modal'].forEach(id => {
+                    document.getElementById(id).classList.add('hidden');
+                });
+            }
+            
+            // ? to show about
+            if (e.key === '?') {
+                showAbout();
+            }
+        });
+        
+        // Accessibility: Focus trap for modals
+        const modals = ['login-modal', 'about-modal', 'privacy-modal', 'terms-modal', 'contact-modal'];
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            modal.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    const focusableElements = modal.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+                    
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            lastElement.focus();
+                            e.preventDefault();
+  

@@ -1,0 +1,440 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | IQ+ Math Calc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        #sidebar {
+            transition: width 0.3s ease;
+        }
+        
+        #sidebar.collapsed {
+            width: 4rem;
+        }
+        
+        #sidebar:not(.collapsed) {
+            width: 16rem;
+        }
+        
+        .nav-text {
+            transition: opacity 0.3s ease;
+        }
+        
+        #sidebar.collapsed .nav-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+        }
+        
+        .nav-link {
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            background: rgba(255, 215, 0, 0.3);
+            border-left: 4px solid #FFD700;
+        }
+    </style>
+</head>
+<body class="flex">
+    
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="bg-purple-900/50 backdrop-blur-lg min-h-screen flex flex-col" style="width: 16rem;">
+        
+        <!-- Header -->
+        <div class="p-4 border-b border-white/20 flex items-center justify-between">
+            <span class="nav-text text-white font-bold text-xl">IQ+ Math</span>
+            <button onclick="toggleNav()" class="text-white hover:text-purple-300 transition">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="flex-1 py-4">
+            <a href="dashboard.html" class="nav-link active flex items-center gap-3 px-4 py-3 text-white">
+                <i class="fa-solid fa-chart-line text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            
+            <a href="calc/mc_100_pt.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-vial text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">Pretest</span>
+            </a>
+            
+            <a href="calc/mc_100.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">100</span>
+            </a>
+            
+            <a href="calc/mc_200.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">200</span>
+            </a>
+            
+            <a href="calc/mc_300.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">300</span>
+            </a>
+            
+            <a href="calc/mc_400.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">400</span>
+            </a>
+            
+            <a href="calc/mc_500.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">500</span>
+            </a>
+            
+            <a href="calc/mc_600.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">600</span>
+            </a>
+            
+            <a href="calc/mc_100_post.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-flag-checkered text-xl min-w-[1.5rem]"></i>
+                <span class="nav-text">Post-test</span>
+            </a>
+        </div>
+        
+    </nav>
+    
+    <!-- Top Right: Avatar, Name, Settings Gear -->
+    <div class="fixed top-4 right-4 z-50 flex items-center gap-3 bg-white/10 backdrop-blur-lg rounded-full p-2 pr-4 border-2 border-white/20">
+        <img id="user-avatar" 
+             src="https://via.placeholder.com/48" 
+             alt="Avatar" 
+             class="w-12 h-12 rounded-full border-2 border-white/30">
+        <span id="username" class="text-white font-semibold">Student</span>
+        <a href="settings.html" class="text-white/70 hover:text-white transition-colors ml-2">
+            <i class="fa-solid fa-gear text-xl"></i>
+        </a>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+        
+        <!-- Welcome Header -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 mb-6 border-2 border-white/20">
+            <h1 class="text-3xl font-bold text-white mb-2">Math Calc</h1>
+            <p class="text-purple-200">Complete each path to boost your MOMS placement score</p>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-problems">0</div>
+                <div class="text-purple-200 text-sm">Total Problems</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-first-try">0%</div>
+                <div class="text-purple-200 text-sm">First Try Success</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-grade">--</div>
+                <div class="text-purple-200 text-sm">Current Grade</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-streak">0</div>
+                <div class="text-purple-200 text-sm">Day Streak</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-attempts">0</div>
+                <div class="text-purple-200 text-sm">Total Attempts</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-time">0h</div>
+                <div class="text-purple-200 text-sm">Study Time</div>
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex gap-4 mb-6">
+            <a href="calc/mc_100_pt.html" class="flex-1 bg-purple-500 hover:bg-purple-600 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center">
+                📝 Take Pretest
+            </a>
+            <a href="calc/mc_100_1.1.html" class="flex-1 bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center">
+                📖 Resume Learning
+            </a>
+        </div>
+        
+        <p class="text-center text-white/60 mb-6 text-sm">
+            Pretest is optional - skip what you already know
+        </p>
+        
+        <!-- Overall Progress -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 mb-6 border-2 border-white/20">
+            <h2 class="text-2xl font-bold text-white mb-4">📈 Your Progress</h2>
+            
+            <div class="bg-white/10 rounded-xl p-4 mb-4">
+                <div class="flex justify-between text-white mb-2">
+                    <span>Overall Completion</span>
+                    <span><strong id="total-complete">0</strong>/279 skills</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-4">
+                    <div id="progress-bar" class="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full" style="width: 0%"></div>
+                </div>
+                <p class="text-purple-200 text-sm mt-2">
+                    <span id="progress-percent">0</span>% complete
+                </p>
+            </div>
+        </div>
+        
+        <!-- Simple Path Progress (6 bars) -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 mb-6 border-2 border-white/20">
+            <div class="flex gap-2 mb-2">
+                <a href="calc/mc_100.html" class="flex-1 h-12 rounded-lg bg-gray-400 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="path-100" title="Path 100: Not Started">
+                    100
+                </a>
+                <a href="calc/mc_200.html" class="flex-1 h-12 rounded-lg bg-gray-400 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="path-200" title="Path 200: Not Started">
+                    200
+                </a>
+                <a href="calc/mc_300.html" class="flex-1 h-12 rounded-lg bg-gray-400 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="path-300" title="Path 300: Not Started">
+                    300
+                </a>
+                <a href="calc/mc_400.html" class="flex-1 h-12 rounded-lg bg-gray-400 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="path-400" title="Path 400: Not Started">
+                    400
+                </a>
+                <a href="calc/mc_500.html" class="flex-1 h-12 rounded-lg bg-gray-400 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="path-500" title="Path 500: Not Started">
+                    500
+                </a>
+                <a href="calc/mc_600.html" class="flex-1 h-12 rounded-lg bg-gray-400 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="path-600" title="Path 600: Not Started">
+                    600
+                </a>
+            </div>
+            <div class="text-white/60 text-sm mt-3 text-center">
+                <span class="inline-block w-3 h-3 bg-gray-400 rounded mr-1"></span> Not Started
+                <span class="inline-block w-3 h-3 bg-yellow-500 rounded mr-1 ml-3"></span> Incomplete
+                <span class="inline-block w-3 h-3 bg-green-500 rounded mr-1 ml-3"></span> Passed
+                <span class="inline-block w-3 h-3 bg-red-500 rounded mr-1 ml-3"></span> Failed
+            </div>
+        </div>
+        
+        <!-- Detailed Path Progress -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20">
+            <div class="space-y-3">
+                <!-- Path 100 -->
+                <div class="bg-white/10 rounded-xl p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-semibold">Path 100</span>
+                        <span class="text-purple-200"><span id="path-100-complete">0</span>/38 skills</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                        <div id="path-100-bar" class="bg-green-400 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Path 200 -->
+                <div class="bg-white/10 rounded-xl p-4 opacity-75">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-semibold">Path 200</span>
+                        <span class="text-purple-200"><span id="path-200-complete">0</span>/52 skills</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                        <div id="path-200-bar" class="bg-blue-400 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Path 300 -->
+                <div class="bg-white/10 rounded-xl p-4 opacity-75">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-semibold">Path 300</span>
+                        <span class="text-purple-200"><span id="path-300-complete">0</span>/45 skills</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                        <div id="path-300-bar" class="bg-purple-400 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Path 400 -->
+                <div class="bg-white/10 rounded-xl p-4 opacity-75">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-semibold">Path 400</span>
+                        <span class="text-purple-200"><span id="path-400-complete">0</span>/46 skills</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                        <div id="path-400-bar" class="bg-yellow-400 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Path 500 -->
+                <div class="bg-white/10 rounded-xl p-4 opacity-75">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-semibold">Path 500</span>
+                        <span class="text-purple-200"><span id="path-500-complete">0</span>/49 skills</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                        <div id="path-500-bar" class="bg-orange-400 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Path 600 -->
+                <div class="bg-white/10 rounded-xl p-4 opacity-75">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-semibold">Path 600</span>
+                        <span class="text-purple-200"><span id="path-600-complete">0</span>/49 skills</span>
+                    </div>
+                    <div class="w-full bg-white/20 rounded-full h-2">
+                        <div id="path-600-bar" class="bg-red-400 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center py-8 mt-8">
+            <div class="text-sm text-purple-200 space-y-2">
+                <p>Version 1.0.0 (Alpha) | Built with ❤️ for learners</p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="privacy.html" class="hover:text-white underline">Privacy Policy</a>
+                    <span aria-hidden="true">•</span>
+                    <a href="tos.html" class="hover:text-white underline">Terms of Service</a>
+                    <span aria-hidden="true">•</span>
+                    <a href="contact.html" class="hover:text-white underline">Contact</a>
+                </div>
+                <p class="text-xs mt-4">© 2025 IQ+ Education. Student data protected under FERPA guidelines.</p>
+            </div>
+        </footer>
+        
+    </main>
+    
+    <script type="module">
+        import { auth } from './firebase_config.js';
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { db } from './firebase_config.js';
+        
+        // Check auth
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = 'sign.html';
+                return;
+            }
+            
+            // Load user data
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                
+                // Display username
+                const displayName = userData.preferred_name || userData.username || 'Student';
+                document.getElementById('username').textContent = displayName;
+                
+                // Display avatar
+                if (user.photoURL) {
+                    document.getElementById('user-avatar').src = user.photoURL;
+                }
+                
+                // Load stats (mock data for now)
+                loadStats(userData);
+            }
+        });
+        
+        // Load stats from Firestore
+        function loadStats(userData) {
+            // Mock data - will be real once lessons exist
+            const stats = userData.stats || {
+                total_problems: 0,
+                first_try_success: 0,
+                current_grade: 0,
+                streak_days: 0,
+                total_attempts: 0,
+                study_time_minutes: 0
+            };
+            
+            document.getElementById('stat-problems').textContent = stats.total_problems;
+            document.getElementById('stat-first-try').textContent = 
+                stats.total_problems > 0 ? Math.round((stats.first_try_success / stats.total_problems) * 100) + '%' : '0%';
+            document.getElementById('stat-grade').textContent = 
+                stats.current_grade > 0 ? stats.current_grade.toFixed(1) : '--';
+            document.getElementById('stat-streak').textContent = stats.streak_days;
+            document.getElementById('stat-attempts').textContent = stats.total_attempts;
+            document.getElementById('stat-time').textContent = 
+                Math.floor(stats.study_time_minutes / 60) + 'h';
+            
+            // Load progress
+            const progress = userData.progress || {};
+            let totalComplete = 0;
+            
+            const pathSkills = {
+                100: 38,
+                200: 52,
+                300: 45,
+                400: 46,
+                500: 49,
+                600: 49
+            };
+            
+            [100, 200, 300, 400, 500, 600].forEach(path => {
+                const pathData = progress[`path_${path}`] || { completed: [], status: 'not_started' };
+                const complete = pathData.completed.length;
+                totalComplete += complete;
+                
+                document.getElementById(`path-${path}-complete`).textContent = complete;
+                document.getElementById(`path-${path}-bar`).style.width = 
+                    ((complete / pathSkills[path]) * 100) + '%';
+                
+                // Color the simple progress bar
+                const elem = document.getElementById(`path-${path}`);
+                const status = pathData.status || 'not_started';
+                
+                if (status === 'complete') {
+                    elem.classList.remove('bg-gray-400', 'bg-yellow-500', 'bg-red-500');
+                    elem.classList.add('bg-green-500');
+                    elem.title = `Path ${path}: Passed`;
+                } else if (status === 'failed') {
+                    elem.classList.remove('bg-gray-400', 'bg-yellow-500', 'bg-green-500');
+                    elem.classList.add('bg-red-500');
+                    elem.title = `Path ${path}: Failed - Retry`;
+                } else if (status === 'incomplete') {
+                    elem.classList.remove('bg-gray-400', 'bg-green-500', 'bg-red-500');
+                    elem.classList.add('bg-yellow-500');
+                    elem.title = `Path ${path}: Incomplete`;
+                }
+                // Gray is default (not_started)
+            });
+            
+            document.getElementById('total-complete').textContent = totalComplete;
+            document.getElementById('progress-percent').textContent = 
+                Math.round((totalComplete / 279) * 100);
+            document.getElementById('progress-bar').style.width = 
+                ((totalComplete / 279) * 100) + '%';
+        }
+        
+        // Toggle nav
+        window.toggleNav = function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+            
+            // Save state
+            localStorage.setItem('navCollapsed', sidebar.classList.contains('collapsed'));
+        };
+        
+        // Load nav state
+        window.addEventListener('DOMContentLoaded', () => {
+            const collapsed = localStorage.getItem('navCollapsed') === 'true';
+            if (collapsed) {
+                document.getElementById('sidebar').classList.add('collapsed');
+            }
+        });
+    </script>
+    
+<script src="tutor.js"></script>
+</body>
+</html>

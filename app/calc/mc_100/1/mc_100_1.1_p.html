@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Practice | Place Value</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    
+    <!-- Top Header -->
+    <div class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-purple-900/50 backdrop-blur-lg border-b border-white/20">
+        <a href="mc_100_1_1.html" class="text-white/70 hover:text-white transition flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Lesson
+        </a>
+        
+        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-lg rounded-full p-2 pr-4 border-2 border-white/20">
+            <img id="user-avatar" src="https://via.placeholder.com/48" alt="Avatar" class="w-12 h-12 rounded-full border-2 border-white/30">
+            <span id="username" class="text-white font-semibold">Student</span>
+            <a href="../../../settings.html" class="text-white/70 hover:text-white transition-colors ml-2">
+                <i class="fa-solid fa-gear text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto p-8 pt-24">
+        
+        <!-- Practice Container -->
+        <div id="practice-container" class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border-2 border-white/20">
+            
+            <!-- Easter Egg Banner (shown at problem start) -->
+            <div id="easter-egg-banner" class="hidden bg-yellow-500/20 border-2 border-yellow-400 rounded-xl p-4 mb-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-lightbulb text-yellow-400 text-2xl"></i>
+                        <p id="easter-egg-text" class="text-white font-semibold"></p>
+                    </div>
+                    <button onclick="dismissEasterEgg()" class="text-white/70 hover:text-white transition">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Problem Display -->
+            <div class="text-white mb-6">
+                <h2 class="text-2xl font-bold mb-2">Problem <span id="problem-number">1</span> of 5</h2>
+                <p id="problem-text" class="text-xl bg-purple-900/30 rounded-lg p-4"></p>
+            </div>
+            
+            <!-- Step Display -->
+            <div class="text-white mb-6">
+                <p class="text-sm text-purple-200 mb-2">Step <span id="step-number">1</span></p>
+                <div class="bg-white/10 rounded-lg p-4 mb-2">
+                    <p id="step-display" class="text-lg font-semibold"></p>
+                </div>
+                <p id="work-shown" class="text-sm text-purple-200 italic hidden"></p>
+            </div>
+            
+            <!-- Question -->
+            <div class="text-white mb-4">
+                <p id="question-text" class="text-lg font-semibold mb-4"></p>
+            </div>
+            
+            <!-- Choices -->
+            <div id="choices-container" class="space-y-3 mb-6">
+                <!-- Populated by JS -->
+            </div>
+            
+            <!-- Feedback -->
+            <div id="feedback-area" class="hidden"></div>
+            
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="mt-6 bg-white/10 backdrop-blur-lg rounded-xl p-4 border-2 border-white/20">
+            <div class="flex gap-2 mb-3">
+                <div id="progress-1" class="flex-1 h-8 rounded-lg bg-gray-400 flex items-center justify-center text-white font-bold text-sm">1</div>
+                <div id="progress-2" class="flex-1 h-8 rounded-lg bg-gray-400 flex items-center justify-center text-white font-bold text-sm">2</div>
+                <div id="progress-3" class="flex-1 h-8 rounded-lg bg-gray-400 flex items-center justify-center text-white font-bold text-sm">3</div>
+                <div id="progress-4" class="flex-1 h-8 rounded-lg bg-gray-400 flex items-center justify-center text-white font-bold text-sm">4</div>
+                <div id="progress-5" class="flex-1 h-8 rounded-lg bg-gray-400 flex items-center justify-center text-white font-bold text-sm">5</div>
+            </div>
+            <div class="text-white/60 text-sm text-center">
+                <span class="inline-block w-3 h-3 bg-gray-400 rounded mr-1"></span> Not Started
+                <span class="inline-block w-3 h-3 bg-yellow-500 rounded mr-1 ml-3"></span> In Progress
+                <span class="inline-block w-3 h-3 bg-green-500 rounded mr-1 ml-3"></span> Complete
+            </div>
+        </div>
+        
+        <!-- Timer Display -->
+        <div class="mt-4 text-center">
+            <p class="text-white/70 text-sm">
+                <i class="fa-solid fa-clock mr-2"></i>
+                Time: <span id="timer-display">0:00</span>
+            </p>
+        </div>
+        
+    </main>
+    
+    <!-- Splash Page (hidden until completion) -->
+    <div id="splash-page" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-2xl w-full border-2 border-white/20 text-white">
+            <div class="text-center mb-6">
+                <h2 class="text-4xl font-bold mb-2">🎉 PRACTICE COMPLETE!</h2>
+                <p class="text-xl text-purple-200">1.1 • Place Value</p>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-white/10 rounded-lg p-4 text-center">
+                    <p class="text-sm text-purple-200">Time Spent</p>
+                    <p id="splash-time" class="text-2xl font-bold">0 min</p>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 text-center">
+                    <p class="text-sm text-purple-200">First Try Success</p>
+                    <p id="splash-first-try" class="text-2xl font-bold">0%</p>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 text-center">
+                    <p class="text-sm text-purple-200">Problems Completed</p>
+                    <p id="splash-problems" class="text-2xl font-bold">5/5</p>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 text-center">
+                    <p class="text-sm text-purple-200">Total Attempts</p>
+                    <p id="splash-attempts" class="text-2xl font-bold">0</p>
+                </div>
+            </div>
+            
+            <div id="weak-areas" class="bg-red-500/20 border-2 border-red-400 rounded-lg p-4 mb-4 hidden">
+                <p class="font-bold mb-2">⚠️ NEEDS WORK:</p>
+                <ul id="weak-list" class="list-disc list-inside space-y-1 text-sm"></ul>
+            </div>
+            
+            <div id="strong-areas" class="bg-green-500/20 border-2 border-green-400 rounded-lg p-4 mb-4 hidden">
+                <p class="font-bold mb-2">💪 STRONG AREAS:</p>
+                <ul id="strong-list" class="list-disc list-inside space-y-1 text-sm"></ul>
+            </div>
+            
+            <div class="bg-white/10 rounded-lg p-6 mb-6">
+                <p class="font-bold mb-2">RECOMMENDATION:</p>
+                <p id="recommendation-text" class="text-lg"></p>
+            </div>
+            
+            <div class="flex gap-4">
+                <button onclick="retakePractice()" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl transition">
+                    🔄 Retake Practice
+                </button>
+                <button onclick="goToQuiz()" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition">
+                    ✅ Take Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Timer variables
+        let startTime = Date.now();
+        let elapsedTime = 0;
+        let timerPaused = false;
+        let timerInterval;
+        
+        // Session data
+        let sessionData = {
+            startedAt: new Date().toISOString(),
+            problems: [],
+            currentProblemData: null,
+            breaksCount: 0
+        };
+        
+        // Problem definitions
+        const problems = [
+            {
+                id: "1.1-p1",
+                problem: "What is the value of the 7 in 4,752?",
+                easterEgg: "🎲 In ancient Egypt, they used hieroglyphs for numbers. A coiled rope = 100!",
+                steps: [
+                    {
+                        num: 1,
+                        display: "4,752",
+                        question: "What should we do first to find the value of the 7?",
+                        choices: [
+                            { text: "Count from the right to find which place the 7 is in", correct: true, tracked: true, feedback: "✅ Right! Start by counting positions from the right." },
+                            { text: "Add up all the digits (4+7+5+2)", correct: false, tracked: true, feedback: "That gives you the sum, not the value of one digit. Try finding its position first." },
+                            { text: "Multiply 7 × 10", correct: false, tracked: true, feedback: "Not yet! We need to know WHICH place it's in first. Count from the right." },
+                            { text: "🚰 Water break", correct: false, tracked: false, isBreak: true, feedback: "Hydrate or die-drate! Come back when ready." }
+                        ]
+                    },
+                    {
+                        num: 2,
+                        display: "4,752 → Count from right: 2 (ones), 5 (tens), 7 (hundreds), 4 (thousands)",
+                        workShown: "The 7 is in the hundreds place",
+                        question: "Now that we know it's in the hundreds place, what's next?",
+                        choices: [
+                            { text: "The value is 7 (just the digit)", correct: false, tracked: true, feedback: "That's just the digit. We need to multiply by its place value!" },
+                            { text: "Multiply 7 × 100 (digit × place value)", correct: true, tracked: true, feedback: "✅ Perfect! Hundreds place means × 100." },
+                            { text: "Count how many times 7 appears", correct: false, tracked: true, feedback: "We're finding the VALUE of this specific 7, not counting them." },
+                            { text: "🎲 Fun fact: Place value was invented in India around 500 CE!", correct: false, tracked: false, isEasterEgg: true, feedback: "Cool fact! But let's solve the problem first." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "1.1-p2",
+                problem: "Write 3,524 in expanded form",
+                easterEgg: "💡 Fun fact: The equals sign (=) was invented in 1557 by Robert Recorde!",
+                steps: [
+                    {
+                        num: 1,
+                        display: "3,524",
+                        question: "What's the first step to write this in expanded form?",
+                        choices: [
+                            { text: "Break it into place values (thousands, hundreds, tens, ones)", correct: true, tracked: true, feedback: "✅ Right! Split it by place value first." },
+                            { text: "Add all the digits together", correct: false, tracked: true, feedback: "That's not expanded form. We need to show EACH place value separately." },
+                            { text: "Round to the nearest thousand", correct: false, tracked: true, feedback: "We're not rounding - we're breaking it down exactly as it is." },
+                            { text: "☕ Coffee break", correct: false, tracked: false, isBreak: true, feedback: "Caffeine powers math! Come back caffeinated." }
+                        ]
+                    },
+                    {
+                        num: 2,
+                        display: "3,524 = ? thousands + ? hundreds + ? tens + ? ones",
+                        workShown: "Reading left to right: 3 in thousands, 5 in hundreds, 2 in tens, 4 in ones",
+                        question: "How do we turn these into actual values?",
+                        choices: [
+                            { text: "Just write the digits (3, 5, 2, 4)", correct: false, tracked: true, feedback: "That's just listing digits. We need to show what they're WORTH." },
+                            { text: "Multiply each digit by its place value (3×1000, 5×100, 2×10, 4×1)", correct: true, tracked: true, feedback: "✅ Yes! Each digit gets multiplied by its place value." },
+                            { text: "🎲 Fun fact: Your brain can process numbers faster than words!", correct: false, tracked: false, isEasterEgg: true, feedback: "That's why math is powerful! Now let's finish this." }
+                        ]
+                    },
+                    {
+                        num: 3,
+                        display: "3×1000 + 5×100 + 2×10 + 4×1 = ?",
+                        workShown: "Calculate each part: 3000 + 500 + 20 + 4",
+                        question: "What does this equal?",
+                        choices: [
+                            { text: "3,524 (same number we started with)", correct: false, tracked: true, feedback: "True! But there's a more complete answer..." },
+                            { text: "3000 + 500 + 20 + 4", correct: false, tracked: true, feedback: "True! But this IS 3,524, so..." },
+                            { text: "Both are correct! (3,524 = 3000 + 500 + 20 + 4)", correct: true, tracked: true, feedback: "🎯 Perfect! Expanded form shows HOW the number is built!" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "1.1-p3",
+                problem: "In the number 5,553, which 5 has the greatest value?",
+                easterEgg: "🧠 Your brain uses 20% of your body's energy. Math burns calories!",
+                steps: [
+                    {
+                        num: 1,
+                        display: "5,553",
+                        question: "How do we figure out which 5 is worth the most?",
+                        choices: [
+                            { text: "They're all the same because they're all 5", correct: false, tracked: true, feedback: "Nope! Same digit, different positions = different values." },
+                            { text: "Check which place each 5 is in (leftmost = biggest)", correct: true, tracked: true, feedback: "✅ Right! Position determines value, not the digit itself." },
+                            { text: "Add them all together", correct: false, tracked: true, feedback: "We're comparing INDIVIDUAL values, not adding them." },
+                            { text: "🍪 Cookie break", correct: false, tracked: false, isBreak: true, feedback: "Glucose deficiency detected! Grab a snack and come back." }
+                        ]
+                    },
+                    {
+                        num: 2,
+                        display: "5,553 → First 5 (thousands), second 5 (hundreds), third 5 (tens), 3 (ones)",
+                        workShown: "Three different 5's in different places",
+                        question: "Which place makes the 5 worth the most?",
+                        choices: [
+                            { text: "The first 5 (thousands place = 5,000)", correct: true, tracked: true, feedback: "🎯 Yes! 5,000 > 500 > 50. Leftmost = largest!" },
+                            { text: "The second 5 (hundreds place = 500)", correct: false, tracked: true, feedback: "500 is big, but 5,000 is bigger!" },
+                            { text: "🎲 Fun fact: The largest known prime number has 24 million digits!", correct: false, tracked: false, isEasterEgg: true, feedback: "Wild, right? But let's finish this smaller number first." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "1.1-p4",
+                problem: "Compare these numbers: 543, 5,043, and 5,430",
+                easterEgg: "🌍 Zero was invented in India around 500 CE. Math before zero was HARD!",
+                steps: [
+                    {
+                        num: 1,
+                        display: "543 vs 5,043 vs 5,430",
+                        question: "What's different about these three numbers?",
+                        choices: [
+                            { text: "Where the zero is placed", correct: true, tracked: true, feedback: "✅ Exactly! Zero's position changes everything." },
+                            { text: "They all contain the digits 5, 4, 3", correct: false, tracked: true, feedback: "True, but that's not what makes them DIFFERENT. Look at the zeros!" },
+                            { text: "Nothing, zeros don't matter", correct: false, tracked: true, feedback: "Zeros matter A LOT! They hold places and change the value." },
+                            { text: "🚶 Walk break", correct: false, tracked: false, isBreak: true, feedback: "Movement helps memory! Take a lap and come back." }
+                        ]
+                    },
+                    {
+                        num: 2,
+                        display: "5,043 = 5 thousands + 0 hundreds + 4 tens + 3 ones",
+                        workShown: "The zero holds the hundreds place",
+                        question: "What does the zero do in 5,043?",
+                        choices: [
+                            { text: "Holds the hundreds place (shows there are 0 hundreds)", correct: true, tracked: true, feedback: "✅ Perfect! Zero is a placeholder - it matters!" },
+                            { text: "Means nothing, we could write 5,43", correct: false, tracked: true, feedback: "No! Without the zero, 543 ≠ 5,043. Try it!" },
+                            { text: "🎲 Fun fact: Romans had no zero. Imagine doing math without it!", correct: false, tracked: false, isEasterEgg: true, feedback: "Seriously impossible! Okay, back to work." }
+                        ]
+                    },
+                    {
+                        num: 3,
+                        display: "543 (five hundred) vs 5,043 (five thousand) vs 5,430 (five thousand)",
+                        workShown: "Count the places to compare",
+                        question: "Which is the largest number?",
+                        choices: [
+                            { text: "543", correct: false, tracked: true, feedback: "Nope! 543 is the smallest. It's only in the hundreds." },
+                            { text: "5,043", correct: true, tracked: true, feedback: "✅ Yes! 5,043 > 5,430 is false, but 5,043 > 543. Wait..." },
+                            { text: "5,430", correct: true, tracked: true, feedback: "🎯 Actually YES! 5,430 > 5,043 because 5,430 has 4 hundreds vs 0!" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "1.1-p5",
+                problem: "Build a number from: 6×1000 + 2×100 + 0×10 + 9×1",
+                easterEgg: "⚡ Lightning calculation: Some people can multiply 3-digit numbers in seconds!",
+                steps: [
+                    {
+                        num: 1,
+                        display: "6×1000 + 2×100 + 0×10 + 9×1",
+                        question: "What's the first step to build this number?",
+                        choices: [
+                            { text: "Calculate each part separately", correct: true, tracked: true, feedback: "✅ Right! Break it down piece by piece." },
+                            { text: "Add the digits: 6+2+0+9", correct: false, tracked: true, feedback: "No! We need to multiply FIRST, then add." },
+                            { text: "Ignore the zero (0×10 = nothing)", correct: false, tracked: true, feedback: "Zero times anything IS zero, but we still count it!" },
+                            { text: "🎵 Music break", correct: false, tracked: false, isBreak: true, feedback: "Classical music + math = chef's kiss. Back soon!" }
+                        ]
+                    },
+                    {
+                        num: 2,
+                        display: "6000 + 200 + 0 + 9 = ?",
+                        workShown: "Now just add them together",
+                        question: "What number does this make?",
+                        choices: [
+                            { text: "6,209", correct: true, tracked: true, feedback: "🎯 Perfect! You built 6,209 from expanded form!" },
+                            { text: "629", correct: false, tracked: true, feedback: "You forgot the thousands! 6,000 not 600." },
+                            { text: "🎲 Fun fact: Mathematicians can 'see' numbers in colors (synesthesia)!", correct: false, tracked: false, isEasterEgg: true, feedback: "Some see 7 as green! Wild. Now finish this problem." }
+                        ]
+                    }
+                ]
+            }
+        ];
+        
+        let currentProblemIndex = 0;
+        let currentStepIndex = 0;
+        let currentProblem = problems[0];
+        let currentStep = currentProblem.steps[0];
+        
+        // Start timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (!timerPaused) {
+                    elapsedTime = Date.now() - startTime;
+                    updateTimerDisplay();
+                }
+            }, 1000);
+        }
+        
+        function updateTimerDisplay() {
+            const seconds = Math.floor(elapsedTime / 1000);
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.getElementById('timer-display').textContent = 
+                `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function pauseTimer() {
+            timerPaused = true;
+        }
+        
+        function resumeTimer() {
+            timerPaused = false;
+            startTime = Date.now() - elapsedTime;
+        }
+        
+        // Initialize
+        function init() {
+            loadProblem();
+            startTimer();
+            initProblemData();
+        }
+        
+        function initProblemData() {
+            sessionData.currentProblemData = {
+                id: currentProblem.id,
+                steps: [],
+                timeSpent: 0,
+                startTime: Date.now()
+            };
+        }
+        
+        function loadProblem() {
+            currentStep = currentProblem.steps[currentStepIndex];
+            
+            // Show easter egg banner
+            if (currentStepIndex === 0 && currentProblem.easterEgg) {
+                showEasterEgg(currentProblem.easterEgg);
+            }
+            
+            // Update problem display
+            document.getElementById('problem-number').textContent = currentProblemIndex + 1;
+            document.getElementById('problem-text').textContent = currentProblem.problem;
+            document.getElementById('step-number').textContent = currentStepIndex + 1;
+            document.getElementById('step-display').textContent = currentStep.display;
+            document.getElementById('question-text').textContent = currentStep.question;
+            
+            // Show work if exists
+            if (currentStep.workShown) {
+                document.getElementById('work-shown').textContent = currentStep.workShown;
+                document.getElementById('work-shown').classList.remove('hidden');
+            } else {
+                document.getElementById('work-shown').classList.add('hidden');
+            }
+            
+            // Clear feedback
+            document.getElementById('feedback-area').innerHTML = '';
+            document.getElementById('feedback-area').classList.add('hidden');
+            
+            // Render choices
+            renderChoices();
+            
+            // Update progress bar
+            updateProgressBar();
+        }
+        
+        function renderChoices() {
+            const container = document.getElementById('choices-container');
+            container.innerHTML = '';
+            
+            currentStep.choices.forEach((choice, idx) => {
+                const button = document.createElement('button');
+                button.className = 'w-full text-left p-4 bg-white/10 border-2 border-white/30 rounded-lg hover:border-white/60 hover:bg-white/20 transition text-white';
+                button.innerHTML = `<span class="font-bold text-purple-300">${String.fromCharCode(65 + idx)})</span> ${choice.text}`;
+                button.onclick = () => handleChoice(idx);
+                container.appendChild(button);
+            });
+        }
+        
+        function handleChoice(choiceIdx) {
+            const choice = currentStep.choices[choiceIdx];
+            const feedbackArea = document.getElementById('feedback-area');
+            
+            // Handle breaks
+            if (choice.isBreak) {
+                pauseTimer();
+                sessionData.breaksCount++;
+                feedbackArea.innerHTML = `
+                    <div class="p-4 rounded-lg bg-blue-500/20 border-2 border-blue-400">
+                        <p class="font-semibold mb-3">${choice.feedback}</p>
+                        <button onclick="resumeFromBreak()" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">
+                            Back to Math
+                        </button>
+                    </div>
+                `;
+                feedbackArea.classList.remove('hidden');
+                return;
+            }
+            
+            // Handle easter eggs
+            if (choice.isEasterEgg) {
+                feedbackArea.innerHTML = `
+                    <div class="p-4 rounded-lg bg-yellow-500/20 border-2 border-yellow-400">
+                        <p class="font-semibold mb-3">${choice.feedback}</p>
+                        <button onclick="clearFeedback()" class="px-6 py-2 bg-yellow-600 hover:bg-yellow-700 text-white font-bold rounded-lg transition">
+                            Got it!
+                        </button>
+                    </div>
+                `;
+                feedbackArea.classList.remove('hidden');
+                return;
+            }
+            
+            // Track this attempt (only if tracked)
+            if (choice.tracked) {
+                trackAttempt(choiceIdx, choice.correct);
+            }
+            
+            // Show feedback
+            if (choice.correct) {
+                feedbackArea.innerHTML = `
+                    <div class="p-4 rounded-lg bg-green-500/20 border-2 border-green-400">
+                        <p class="font-semibold mb-3">${choice.feedback}</p>
+                        <button onclick="nextStep()" class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition">
+                            Continue →
+                        </button>
+                    </div>
+                `;
+            } else {
+                feedbackArea.innerHTML = `
+                    <div class="p-4 rounded-lg bg-red-500/20 border-2 border-red-400">
+                        <p class="font-semibold mb-3">${choice.feedback}</p>
+                        <button onclick="clearFeedback()" class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition">
+                            Try Again
+                        </button>
+                    </div>
+                `;
+            }
+            
+            feedbackArea.classList.remove('hidden');
+        }
+        
+        function trackAttempt(choiceIdx, correct) {
+            // Initialize step tracking if first attempt
+            if (!sessionData.currentProblemData.steps[currentStepIndex]) {
+                sessionData.currentProblemData.steps[currentStepIndex] = {
+                    num: currentStep.num,
+                    attempts: 0,
+                    firstTry: null,
+                    timeSpent: 0,
+                    selectedChoices: [],
+                    startTime: Date.now()
+                };
+            }
+            
+            const stepData = sessionData.currentProblemData.steps[currentStepIndex];
+            stepData.attempts++;
+            stepData.selectedChoices.push(choiceIdx);
+            
+            if (stepData.firstTry === null) {
+                stepData.firstTry = correct;
+            }
+            
+            if (correct) {
+                stepData.timeSpent = Math.floor((Date.now() - stepData.startTime) / 1000);
+            }
+        }
+        
+        function resumeFromBreak() {
+            resumeTimer();
+            clearFeedback();
+        }
+        
+        function clearFeedback() {
+            document.getElementById('feedback-area').innerHTML = '';
+            document.getElementById('feedback-area').classList.add('hidden');
+        }
+        
+        function nextStep() {
+            currentStepIndex++;
+            
+            if (currentStepIndex >= currentProblem.steps.length) {
+                // Problem complete
+                finishProblem();
+            } else {
+                loadProblem();
+            }
+        }
+        
+        function finishProblem() {
+            // Save problem data
+            sessionData.currentProblemData.timeSpent = Math.floor((Date.now() - sessionData.currentProblemData.startTime) / 1000);
+            sessionData.currentProblemData.completed = true;
+            sessionData.problems.push(sessionData.currentProblemData);
+            
+            // Update progress bar
+            document.getElementById(`progress-${currentProblemIndex + 1}`).classList.remove('bg-yellow-500', 'bg-gray-400');
+            document.getElementById(`progress-${currentProblemIndex + 1}`).classList.add('bg-green-500');
+            
+            // Move to next problem
+            currentProblemIndex++;
+            
+            if (currentProblemIndex >= problems.length) {
+                // All problems complete!
+                finishPractice();
+            } else {
+                currentProblem = problems[currentProblemIndex];
+                currentStepIndex = 0;
+                initProblemData();
+                loadProblem();
+            }
+        }
+        
+        function finishPractice() {
+            clearInterval(timerInterval);
+            
+            // Calculate summary stats
+            let totalSteps = 0;
+            let correctFirstTry = 0;
+            let totalAttempts = 0;
+            let weakAreas = [];
+            let strongAreas = [];
+            
+            sessionData.problems.forEach(prob => {
+                prob.steps.forEach(step => {
+                    totalSteps++;
+                    totalAttempts += step.attempts;
+                    if (step.firstTry) correctFirstTry++;
+                    
+                    if (step.attempts > 2) {
+                        weakAreas.push({
+                            problem: prob.id,
+                            step: step.num,
+                            attempts: step.attempts
+                        });
+                    } else if (step.firstTry) {
+                        strongAreas.push({
+                            problem: prob.id,
+                            step: step.num
+                        });
+                    }
+                });
+            });
+            
+            const firstTryRate = Math.round((correctFirstTry / totalSteps) * 100);
+            const totalTime = Math.floor(elapsedTime / 1000);
+            
+            sessionData.summary = {
+                totalProblems: problems.length,
+                totalSteps: totalSteps,
+                correctFirstTry: correctFirstTry,
+                totalAttempts: totalAttempts,
+                firstTryRate: firstTryRate,
+                timeSpent: totalTime,
+                breaksCount: sessionData.breaksCount
+            };
+            
+            // Show splash page
+            showSplash(sessionData.summary, weakAreas, strongAreas);
+            
+            // Save to Firestore
+            saveToFirestore(sessionData);
+        }
+        
+        function showSplash(summary, weakAreas, strongAreas) {
+            const mins = Math.floor(summary.timeSpent / 60);
+            const secs = summary.timeSpent % 60;
+            
+            document.getElementById('splash-time').textContent = `${mins} min ${secs} sec`;
+            document.getElementById('splash-first-try').textContent = `${summary.firstTryRate}%`;
+            document.getElementById('splash-problems').textContent = `${summary.totalProblems}/${summary.totalProblems}`;
+            document.getElementById('splash-attempts').textContent = summary.totalAttempts;
+            
+            // Show weak areas
+            if (weakAreas.length > 0) {
+                document.getElementById('weak-areas').classList.remove('hidden');
+                const weakList = document.getElementById('weak-list');
+                weakList.innerHTML = weakAreas.map(w => 
+                    `<li>Problem ${w.problem.split('-')[1]}, Step ${w.step} (${w.attempts} attempts)</li>`
+                ).join('');
+            }
+            
+            // Show strong areas
+            if (strongAreas.length > 3) {
+                document.getElementById('strong-areas').classList.remove('hidden');
+                const strongList = document.getElementById('strong-list');
+                strongList.innerHTML = [
+                    'Finding digit positions',
+                    'Calculating digit values',
+                    'Basic place value concepts'
+                ].map(s => `<li>${s}</li>`).join('');
+            }
+            
+            // Recommendation
+            let recommendation = '';
+            if (summary.firstTryRate >= 80) {
+                recommendation = '🏆 Excellent! You crushed it. Skip straight to the Test if you want!';
+            } else if (summary.firstTryRate >= 70) {
+                recommendation = '✅ Solid performance! You\'re ready for the Quiz.';
+            } else if (summary.firstTryRate >= 60) {
+                recommendation = '⚠️ Review weak areas, then take the Quiz.';
+            } else {
+                recommendation = '📚 Redo Practice to build stronger foundations before moving on.';
+            }
+            
+            document.getElementById('recommendation-text').textContent = recommendation;
+            document.getElementById('splash-page').classList.remove('hidden');
+        }
+        
+        function saveToFirestore(data) {
+            // TODO: Implement Firestore save
+            console.log('Saving to Firestore:', data);
+        }
+        
+        function retakePractice() {
+            location.reload();
+        }
+        
+        function goToQuiz() {
+            window.location.href = 'mc_100_1_1_q.html';
+        }
+        
+        function showEasterEgg(text) {
+            document.getElementById('easter-egg-text').textContent = text;
+            document.getElementById('easter-egg-banner').classList.remove('hidden');
+        }
+        
+        function dismissEasterEgg() {
+            document.getElementById('easter-egg-banner').classList.add('hidden');
+        }
+        
+        function updateProgressBar() {
+            for (let i = 0; i < problems.length; i++) {
+                const elem = document.getElementById(`progress-${i + 1}`);
+                if (i < currentProblemIndex) {
+                    elem.classList.remove('bg-gray-400', 'bg-yellow-500');
+                    elem.classList.add('bg-green-500');
+                } else if (i === currentProblemIndex) {
+                    elem.classList.remove('bg-gray-400', 'bg-green-500');
+                    elem.classList.add('bg-yellow-500');
+                }
+            }
+        }
+        
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+    
+    <script type="module">
+        import { auth } from '../../../firebase_config.js';
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { db } from '../../../firebase_config.js';
+        
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = '../../../sign.html';
+                return;
+            }
+            
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                const displayName = userData.preferred_name || userData.username || 'Student';
+                document.getElementById('username').textContent = displayName;
+                
+                if (user.photoURL) {
+                    document.getElementById('user-avatar').src = user.photoURL;
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

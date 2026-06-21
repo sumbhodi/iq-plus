@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects | IQ+</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .subject-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .subject-card:hover:not(.disabled) {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .subject-card.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    
+    <div class="max-w-6xl w-full">
+        <header class="text-center mb-12">
+            <button onclick="window.location.href='IQ+_Splash.html'" class="absolute top-4 left-4 text-white/70 hover:text-white transition text-sm flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+            <h1 class="text-5xl font-bold text-white mb-4">Choose Your Subject</h1>
+            <p class="text-xl text-purple-100">Start Learning</p>
+        </header>
+        
+        <main class="bg-white/10 backdrop-blur-lg rounded-3xl p-8">
+            <nav aria-label="Subject selection" class="flex justify-center">
+                <div class="w-full max-w-sm">
+                    
+                    <!-- MATH CARD -->
+                    <button class="subject-card bg-white rounded-2xl p-6 shadow-xl text-left w-full" 
+                            onclick="window.location.href='math/Math_Levels.html'" 
+                            aria-label="Start Mathematics course">
+                        <div class="text-center">
+                            <i class="fa-solid fa-calculator text-6xl text-blue-600 mb-4" aria-hidden="true"></i>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Mathematics</h3>
+                            <p class="text-slate-600 text-sm mb-4">Kindergarten → Calculus</p>
+                            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">
+                                AVAILABLE NOW
+                            </span>
+                        </div>
+                    </button>
+                    
+                    <!-- Sign In Reminder -->
+                    <div class="text-center mt-6">
+                        <p class="text-white/80 text-sm mb-2">
+                            Try free samples • Sign in to save progress
+                        </p>
+                        <button onclick="window.location.href='sign.html'" class="text-white hover:text-purple-200 text-sm underline transition">
+                            Already have an account? Sign In
+                        </button>
+                    </div>
+                    
+                </div>
+            </nav>
+        </main>
+        
+        <footer class="text-center text-purple-200 text-sm mt-8">
+            <p>© 2025 IQ+ Education</p>
+        </footer>
+    </div>
+
+</body>
+</html>

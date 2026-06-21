@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Place Value | IQ+ Math</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .nav-link {
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            background: rgba(255, 215, 0, 0.3);
+            border-left: 4px solid #FFD700;
+        }
+    </style>
+</head>
+<body class="flex">
+    
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="bg-purple-900/50 backdrop-blur-lg min-h-screen flex flex-col" style="width: 16rem;">
+        
+        <!-- Header -->
+        <div class="p-4 border-b border-white/20">
+            <span class="text-white font-bold text-xl">Path 100</span>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="flex-1 py-4 overflow-y-auto">
+            <a href="../../../dashboard.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-chart-line text-xl min-w-[1.5rem]"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <!-- Path 100 - EXPANDED -->
+            <div class="border-l-4 border-yellow-500 bg-white/5">
+                <a href="../../mc_100.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                    <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                    <span>100</span>
+                </a>
+                
+                <!-- Skill Set 1 - EXPANDED -->
+                <div class="bg-white/5">
+                    <a href="../mc_100_1.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                        <i class="fa-solid fa-1 text-sm min-w-[1rem]"></i>
+                        <span>Number Sense</span>
+                    </a>
+                    
+                    <a href="mc_100_1_pt.html" class="nav-link flex items-center gap-3 px-12 py-1 text-white/60 hover:text-white text-xs">
+                        <i class="fa-solid fa-vial text-xs"></i>
+                        <span>Pretest</span>
+                    </a>
+                    
+                    <!-- Skill 1.1 - EXPANDED -->
+                    <div class="bg-white/5 border-l-2 border-green-400">
+                        <a href="mc_100_1_1.html" class="nav-link active flex items-center gap-2 px-14 py-1 text-white text-xs">
+                            <span>1.1 · Place Value</span>
+                        </a>
+                        
+                        <a href="mc_100_1_1_pt.html" class="nav-link flex items-center gap-2 px-16 py-1 text-white/50 hover:text-white text-xs">
+                            <i class="fa-solid fa-vial text-xs"></i>
+                            <span>Pretest</span>
+                        </a>
+                        
+                        <a href="mc_100_1_1_p.html" class="nav-link flex items-center gap-2 px-16 py-1 text-white/50 hover:text-white text-xs">
+                            <span>Practice</span>
+                        </a>
+                        
+                        <a href="mc_100_1_1_q.html" class="nav-link flex items-center gap-2 px-16 py-1 text-white/50 hover:text-white text-xs">
+                            <span>Quiz</span>
+                        </a>
+                        
+                        <a href="mc_100_1_1_t.html" class="nav-link flex items-center gap-2 px-16 py-1 text-white/50 hover:text-white text-xs">
+                            <span>Test</span>
+                        </a>
+                    </div>
+                    
+                    <a href="mc_100_1_2.html" class="nav-link flex items-center gap-3 px-12 py-1 text-white/60 hover:text-white text-xs">
+                        <span>1.2 · Comparing Numbers</span>
+                    </a>
+                    
+                    <a href="mc_100_1_3.html" class="nav-link flex items-center gap-3 px-12 py-1 text-white/60 hover:text-white text-xs">
+                        <span>1.3 · Rounding</span>
+                    </a>
+                    
+                    <a href="mc_100_1_4.html" class="nav-link flex items-center gap-3 px-12 py-1 text-white/60 hover:text-white text-xs">
+                        <span>1.4 · Patterns</span>
+                    </a>
+                    
+                    <a href="mc_100_1_post.html" class="nav-link flex items-center gap-3 px-12 py-1 text-white/60 hover:text-white text-xs">
+                        <i class="fa-solid fa-flag-checkered text-xs"></i>
+                        <span>Post-test</span>
+                    </a>
+                    
+                    <a href="mc_100_1_m.html" class="nav-link flex items-center gap-3 px-12 py-1 text-white/60 hover:text-white text-xs">
+                        <i class="fa-solid fa-chart-bar text-xs"></i>
+                        <span>Metrics</span>
+                    </a>
+                </div>
+                
+                <a href="../mc_100_2.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-2 text-sm min-w-[1rem]"></i>
+                    <span>2 · Operations</span>
+                </a>
+                
+                <a href="../mc_100_3.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-3 text-sm min-w-[1rem]"></i>
+                    <span>3 · Fractions</span>
+                </a>
+                
+                <a href="../mc_100_4.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-4 text-sm min-w-[1rem]"></i>
+                    <span>4 · Decimals</span>
+                </a>
+                
+                <a href="../mc_100_5.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-5 text-sm min-w-[1rem]"></i>
+                    <span>5 · Percents</span>
+                </a>
+                
+                <a href="../mc_100_6.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-6 text-sm min-w-[1rem]"></i>
+                    <span>6 · Measurement</span>
+                </a>
+                
+                <a href="../mc_100_7.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-7 text-sm min-w-[1rem]"></i>
+                    <span>7 · Algebra</span>
+                </a>
+                
+                <a href="../mc_100_8.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-8 text-sm min-w-[1rem]"></i>
+                    <span>8 · Problem Solving</span>
+                </a>
+            </div>
+            
+            <a href="../../mc_200.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>200</span>
+            </a>
+            
+            <a href="../../mc_300.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>300</span>
+            </a>
+            
+            <a href="../../mc_400.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>400</span>
+            </a>
+            
+            <a href="../../mc_500.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>500</span>
+            </a>
+            
+            <a href="../../mc_600.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>600</span>
+            </a>
+            
+            <a href="../mc_100_post.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-flag-checkered text-xl min-w-[1.5rem]"></i>
+                <span>Post-test</span>
+            </a>
+        </div>
+        
+    </nav>
+    
+    <!-- Top Right: Avatar, Name, Settings Gear -->
+    <div class="fixed top-4 right-4 z-50 flex items-center gap-3 bg-white/10 backdrop-blur-lg rounded-full p-2 pr-4 border-2 border-white/20">
+        <img id="user-avatar" 
+             src="https://via.placeholder.com/48" 
+             alt="Avatar" 
+             class="w-12 h-12 rounded-full border-2 border-white/30">
+        <span id="username" class="text-white font-semibold">Student</span>
+        <a href="../../../settings.html" class="text-white/70 hover:text-white transition-colors ml-2">
+            <i class="fa-solid fa-gear text-xl"></i>
+        </a>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+        
+        <h1 class="text-3xl font-bold text-white mb-6">1.1 · Place Value</h1>
+        <!-- Pretest Button -->
+        <a href="mc_100_1.1_pt.html" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold py-6 rounded-2xl transition text-center text-2xl mb-8 shadow-lg">
+            🧪 PRETEST
+        </a>
+        
+        <!-- Speed Read Content Box -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-8 border-2 border-white/20">
+            <div class="text-white space-y-4">
+                
+                <!-- Ultra Dense Speed Read -->
+                <div class="bg-purple-900/30 rounded-xl p-6 text-lg leading-relaxed">
+                    <p><strong>Place value:</strong> digit position determines value. Base-10 uses powers of 10.</p>
+                    <p class="mt-2"><strong>3,524 =</strong> 3×10³ + 5×10² + 2×10¹ + 4×10⁰ = 3000 + 500 + 20 + 4</p>
+                    <p class="mt-2"><strong>Pattern:</strong> Each position left is 10× larger. Ones → Tens → Hundreds → Thousands</p>
+                </div>
+                
+                <!-- PhD Expansion -->
+                <div class="mt-6">
+                    <button onclick="window.toggleSection('phd')" class="w-full text-left bg-white/10 hover:bg-white/20 rounded-lg p-4 transition flex items-center justify-between">
+                        <span class="text-xl font-semibold">🎓 PhD Explanation</span>
+                        <i id="icon-phd" class="fa-solid fa-plus"></i>
+                    </button>
+                    
+                    <div id="content-phd" class="hidden mt-4 p-4 bg-white/5 rounded-lg text-white space-y-4 text-sm">
+                        <h4 class="text-xl font-bold mb-3">Positional Notation Systems</h4>
+                        <p class="mb-3">A <strong>positional numeral system</strong> represents numbers where digit position determines magnitude. Modern decimal (base-10) employs ten symbols (0-9), each position representing power of base.</p>
+                        
+                        <p class="mb-3">Digit position determines magnitude through base exponentiation. In base-10 (decimal), each position represents 10ⁿ where n is the position index: 10⁰=1, 10¹=10, 10²=100, 10³=1000. The digit "3" carries different weight depending on its position: 3×10⁰=3, 3×10³=3000.</p>
+                        
+                        <p class="mb-3">The key insight: moving one position left multiplies value by the base. In decimal, that's ×10 each step. In binary (base-2), it's ×2 each step. This positional principle generalizes to any base: binary uses positions 2⁰, 2¹, 2², 2³ (evaluating to 1, 2, 4, 8), while decimal uses powers of 10.</p>
+                        
+                        <p class="mb-3">Compare: decimal 13 = 1×10¹ + 3×10⁰, while binary 1101 = 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 13 (same value, different representation). Alternative bases appear throughout mathematics: binary in computer science and boolean algebra, hexadecimal in memory addressing, and base-60 in ancient Babylonian astronomy. You'll encounter binary extensively in modular arithmetic (Path 300) and computational theory.</p>
+                        
+                        <p class="mb-2 font-semibold">Formal: N = Σ(dᵢ × bⁱ) for i=0 to n</p>
+                        <p class="mb-3">Where dᵢ = digit at position i, b = base</p>
+                        
+                        <div class="bg-purple-500/20 rounded-lg p-4 my-3">
+                            <p class="font-bold mb-2">Breaking down the formula:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4 text-sm">
+                                <li><strong>N</strong> = the number we're representing</li>
+                                <li><strong>dᵢ</strong> = digit at position i (ranges 0-9 in decimal)</li>
+                                <li><strong>b</strong> = base of the system (10 for decimal)</li>
+                                <li><strong>i</strong> = position index (starts at 0 from right)</li>
+                                <li><strong>Σ</strong> = sum all products together</li>
+                            </ul>
+                        </div>
+                        
+                        <p class="mb-2"><strong>Example decomposition (3,524):</strong></p>
+                        <ul class="list-disc list-inside space-y-1 ml-4 mb-3">
+                            <li>d₃=3, position 3: 3×10³ = 3000</li>
+                            <li>d₂=5, position 2: 5×10² = 500</li>
+                            <li>d₁=2, position 1: 2×10¹ = 20</li>
+                            <li>d₀=4, position 0: 4×10⁰ = 4</li>
+                        </ul>
+                        
+                        <p class="text-sm opacity-80">Alternative bases: binary (base-2), octal (base-8), hexadecimal (base-16). Historical: Babylonian (base-60), Mayan (base-20).</p>
+                    </div>
+                </div>
+                
+                <!-- 5th Grader Expansion -->
+                <div class="mt-4">
+                    <button onclick="window.toggleSection('fifth')" class="w-full text-left bg-white/10 hover:bg-white/20 rounded-lg p-4 transition flex items-center justify-between">
+                        <span class="text-xl font-semibold">🧒 5th Grader Explanation</span>
+                        <i id="icon-fifth" class="fa-solid fa-plus"></i>
+                    </button>
+                    
+                    <div id="content-fifth" class="hidden mt-4 bg-white/5 rounded-lg p-6">
+                        <!-- Hook -->
+                        <p class="text-xl font-bold mb-4">Place value is like organizing your piggy bank. Where you put the coins matters!</p>
+                        
+                        <!-- Example 1: Pennies -->
+                        <div class="bg-purple-500/20 rounded-lg p-5 mb-5">
+                            <p class="font-bold text-lg mb-3">📍 Example 1: Sorting 2,743 Pennies</p>
+                            <p class="mb-2">Okay, I've got 2,743 pennies spread all over my floor. Let me organize them!</p>
+                            
+                            <div class="ml-4 space-y-2 my-3">
+                                <p><strong>First, I make piles of 1,000:</strong><br>
+                                1 pile... 2 piles! ✅ Now I have 743 left over.</p>
+                                
+                                <p><strong>Next, piles of 100:</strong><br>
+                                1... 2... 3... 4... 5... 6... 7 piles! ✅ Now I have 43 left over.</p>
+                                
+                                <p><strong>Then piles of 10:</strong><br>
+                                1... 2... 3... 4 piles! ✅ Now I have 3 left over.</p>
+                                
+                                <p><strong>What's left?</strong><br>
+                                Just 3 single pennies sitting there.</p>
+                            </div>
+                            
+                            <div class="bg-white/10 rounded-lg p-3 mt-3">
+                                <p class="text-center text-lg font-bold">
+                                    2,743 = <span class="text-green-400">2 thousands</span> + <span class="text-blue-400">7 hundreds</span> + <span class="text-yellow-400">4 tens</span> + <span class="text-red-400">3 ones</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- The Pattern -->
+                        <div class="bg-blue-500/20 rounded-lg p-4 mb-5">
+                            <p class="font-bold mb-2">🎯 The Pattern:</p>
+                            <p>Each place is <strong>10 times bigger</strong> than the one to its right. You fill up the small piles first, then when you have 10 of something, you make 1 pile of the next size!</p>
+                            <p class="mt-2">1 → 10 → 100 → 1,000 → 10,000 (keeps going forever!)</p>
+                        </div>
+                        
+                        <!-- Example 2: Address -->
+                        <div class="bg-purple-500/20 rounded-lg p-5 mb-5">
+                            <p class="font-bold text-lg mb-3">📍 Example 2: Street Address</p>
+                            <p class="mb-3">Think of it like a street address: <strong>5,204 Main Street</strong></p>
+                            
+                            <div class="ml-4 space-y-2">
+                                <p>• <strong>5</strong> = what thousand block you're on (5,000s)</p>
+                                <p>• <strong>2</strong> = what hundred within that block (5,200s)</p>
+                                <p>• <strong>0</strong> = what ten (no tens - you're at the start!)</p>
+                                <p>• <strong>4</strong> = exact house number (the 4th house)</p>
+                            </div>
+                            
+                            <p class="mt-3 font-semibold">Same digits, different spots = you're at a completely different house!</p>
+                            <p class="text-sm opacity-90 mt-2">(5,204 Main St is NOT the same as 4,025 Main St)</p>
+                        </div>
+                        
+                        <!-- Why It Matters -->
+                        <div class="bg-red-500/20 rounded-lg p-4 mb-5">
+                            <p class="font-bold mb-2">⚡ Why This Matters:</p>
+                            <p>If you mix up the positions, <strong>52</strong> becomes <strong>25</strong>. That's like showing up to house #52 when you meant house #25 - you're at the wrong place!</p>
+                            <p class="mt-2">In math, getting the position wrong means getting the WHOLE answer wrong, even if you have the right digits.</p>
+                        </div>
+                        
+                        <!-- Pro Tip -->
+                        <div class="bg-yellow-500/20 rounded-lg p-4 border-2 border-yellow-500/40">
+                            <p class="font-bold mb-2">💡 Pro Reading Trick:</p>
+                            <p>Start from the <strong>RIGHT</strong> and count: ones, tens, hundreds, thousands.</p>
+                            <p class="mt-2">For 8,512: Start at 2 (ones) → 1 (tens) → 5 (hundreds) → 8 (thousands)</p>
+                            <p class="text-sm mt-2 opacity-90">Once you get the rhythm, you can read ANY number!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Action Buttons (Vertical) -->
+        <div class="space-y-4 mb-8">
+            <a href="mc_100_1.1_p.html" class="block bg-blue-500 hover:bg-blue-600 text-white font-bold py-6 rounded-xl transition text-center text-xl shadow-lg">
+                🎯 PRACTICE
+            </a>
+            
+            <a href="mc_100_1.1_q.html" class="block bg-green-500 hover:bg-green-600 text-white font-bold py-6 rounded-xl transition text-center text-xl shadow-lg">
+                📝 QUIZ
+            </a>
+            
+            <a href="mc_100_1.1_t.html" class="block bg-purple-500 hover:bg-purple-600 text-white font-bold py-6 rounded-xl transition text-center text-xl shadow-lg">
+                ✅ TEST
+            </a>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center py-8 mt-8">
+            <div class="text-sm text-purple-200 space-y-2">
+                <p>Version 1.0.0 (Alpha) | Built with ❤️ for learners</p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="../../../privacy.html" class="hover:text-white underline">Privacy Policy</a>
+                    <span aria-hidden="true">•</span>
+                    <a href="../../../tos.html" class="hover:text-white underline">Terms of Service</a>
+                    <span aria-hidden="true">•</span>
+                    <a href="../../../contact.html" class="hover:text-white underline">Contact</a>
+                </div>
+                <p class="text-xs mt-4">© 2025 IQ+ Education. Student data protected under FERPA guidelines.</p>
+            </div>
+        </footer>
+        
+    </main>
+    
+    <!-- Toggle Function (Must be outside module) -->
+    <script>
+        window.toggleSection = function(section) {
+            const content = document.getElementById('content-' + section);
+            const icon = document.getElementById('icon-' + section);
+            
+            content.classList.toggle('hidden');
+            
+            if (content.classList.contains('hidden')) {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            } else {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            }
+        };
+    </script>
+    
+    <script type="module">
+        import { auth } from '../../../firebase_config.js';
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { db } from '../../../firebase_config.js';
+        
+        // Check auth
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = '../../../sign.html';
+                return;
+            }
+            
+            // Load user data
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                
+                // Display username
+                const displayName = userData.preferred_name || userData.username || 'Student';
+                document.getElementById('username').textContent = displayName;
+                
+                // Display avatar
+                if (user.photoURL) {
+                    document.getElementById('user-avatar').src = user.photoURL;
+                }
+            }
+        });
+    </script>
+    
+<script>
+  // hand the open lesson to the AI tutor as context
+  window.currentLesson = {
+    module: '1 · Number Sense',
+    name: 'Place Value',
+    content: (document.querySelector('main') || document.body).textContent.replace(/\s+/g, ' ').trim().slice(0, 6000)
+  };
+</script>
+<script src="../../../tutor.js"></script>
+</body>
+</html>

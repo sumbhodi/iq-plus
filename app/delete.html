@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" > 
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account | IQ+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center p-8" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    
+    <div class="max-w-2xl w-full">
+        
+        <!-- Warning Container -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border-2 border-red-500/50">
+            
+            <!-- Warning Icon -->
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-triangle-exclamation text-red-500 text-6xl"></i>
+            </div>
+            
+            <h1 class="text-4xl font-bold text-white text-center mb-4">⚠️ Delete Account</h1>
+            
+            <!-- Warning Text -->
+            <div class="bg-red-500/20 border-2 border-red-500/50 rounded-xl p-6 mb-6">
+                <p class="text-white text-lg font-bold mb-4">This action CANNOT be undone!</p>
+                <p class="text-white text-lg mb-4">Deleting your account will:</p>
+                <ul class="text-white space-y-2 list-disc list-inside">
+                    <li>Permanently delete all your progress and scores</li>
+                    <li>Remove all your lesson completions</li>
+                    <li>Delete your profile and optional information</li>
+                    <li>Remove your avatar and uploaded files</li>
+                    <li>Sign you out immediately</li>
+                </ul>
+                <p class="text-white text-lg font-bold mt-4">You will have to start over from scratch if you return.</p>
+            </div>
+            
+            <!-- Confirmation Input -->
+            <div class="mb-6">
+                <label class="block text-white font-bold mb-2">Type "DELETE" to confirm:</label>
+                <input type="text" 
+                       id="confirm-input"
+                       placeholder="Type DELETE in all caps"
+                       class="w-full px-4 py-3 rounded-xl bg-white/20 border-2 border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-red-500/60 transition">
+            </div>
+            
+            <div id="error-message" class="hidden mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-xl text-white text-sm"></div>
+            
+            <!-- Action Buttons -->
+            <div class="flex gap-4">
+                <button onclick="window.location.href='settings.html'" 
+                        class="flex-1 bg-gray-600 hover:bg-gray-700 text-white font-semibold py-4 rounded-xl transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>
+                    Cancel - Keep My Account
+                </button>
+                <button onclick="deleteAccount()" 
+                        class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-xl transition"
+                        id="delete-btn">
+                    <i class="fa-solid fa-trash mr-2"></i>
+                    Delete Forever
+                </button>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script type="module">
+        import { auth } from './firebase_config.js';
+        import { 
+            deleteUser,
+            signOut as firebaseSignOut 
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { ref, deleteObject } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+        import { db, storage } from './firebase_config.js';
+        
+        // Check if user is logged in
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = 'sign.html';
+            }
+        });
+        
+        function showError(message) {
+            const div = document.getElementById('error-message');
+            div.textContent = message;
+            div.classList.remove('hidden');
+            setTimeout(() => div.classList.add('hidden'), 5000);
+        }
+        
+        window.deleteAccount = async function() {
+            const confirmInput = document.getElementById('confirm-input').value;
+            
+            if (confirmInput !== 'DELETE') {
+                showError("Please type DELETE in all caps to confirm");
+                return;
+            }
+            
+            const user = auth.currentUser;
+            if (!user) {
+                showError("No user logged in");
+                return;
+            }
+            
+            // Final confirmation
+            if (!confirm("Are you absolutely sure? This CANNOT be undone!")) {
+                return;
+            }
+            
+            const deleteBtn = document.getElementById('delete-btn');
+            deleteBtn.disabled = true;
+            deleteBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Deleting...';
+            
+            try {
+                // Delete user document from Firestore
+                await deleteDoc(doc(db, "users", user.uid));
+                console.log("✅ Firestore user doc deleted");
+                
+                // Try to delete avatar from Storage (may not exist)
+                try {
+                    const avatarRef = ref(storage, `avatars/${user.uid}`);
+                    await deleteObject(avatarRef);
+                    console.log("✅ Avatar deleted");
+                } catch (storageError) {
+                    console.log("ℹ️ No avatar to delete or already deleted");
+                }
+                
+                // Delete Firebase Auth account
+                await deleteUser(user);
+                console.log("✅ Auth account deleted");
+                
+                // Redirect to splash page
+                alert("Your account has been deleted. Thank you for using IQ+.");
+                window.location.href = 'IQ+_Splash.html';
+                
+            } catch (error) {
+                console.error("❌ Error deleting account:", error);
+                
+                if (error.code === 'auth/requires-recent-login') {
+                    showError("For security, please sign out and sign back in, then try deleting again.");
+                    setTimeout(() => {
+                        firebaseSignOut(auth);
+                        window.location.href = 'sign.html';
+                    }, 3000);
+                } else {
+                    showError("Failed to delete account: " + error.message);
+                    deleteBtn.disabled = false;
+                    deleteBtn.innerHTML = '<i class="fa-solid fa-trash mr-2"></i>Delete Forever';
+                }
+            }
+        };
+    </script>
+    
+</body>
+</html>

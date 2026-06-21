@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path 100 | IQ+ Math Calc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        #sidebar {
+            width: 16rem;
+        }
+        
+        .nav-link {
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-left: 4px solid #FFD700;
+        }
+    </style>
+</head>
+<body class="flex">
+    
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="bg-purple-900/50 backdrop-blur-lg min-h-screen flex flex-col">
+        
+        <!-- Header -->
+        <div class="p-4 border-b border-white/20">
+            <span class="text-white font-bold text-xl">Path 100</span>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="flex-1 py-4">
+            <a href="../dashboard.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-chart-line text-xl min-w-[1.5rem]"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="mc_100/mc_100_pt.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-vial text-xl min-w-[1.5rem]"></i>
+                <span>Pretest</span>
+            </a>
+            
+            <!-- Path 100 - EXPANDED -->
+            <div class="border-l-4 border-yellow-500 bg-white/5">
+                <a href="mc_100.html" class="nav-link active flex items-center gap-3 px-4 py-3 text-white">
+                    <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                    <span>100</span>
+                </a>
+                
+                <a href="mc_100/mc_100_pt.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-vial text-sm min-w-[1rem]"></i>
+                    <span>Pretest</span>
+                </a>
+                
+                <a href="mc_100/mc_100_1.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-1 text-sm min-w-[1rem]"></i>
+                    <span>Number Sense</span>
+                </a>
+                
+                <a href="mc_100/mc_100_2.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-2 text-sm min-w-[1rem]"></i>
+                    <span>Operations</span>
+                </a>
+                
+                <a href="mc_100/mc_100_3.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-3 text-sm min-w-[1rem]"></i>
+                    <span>Fractions</span>
+                </a>
+                
+                <a href="mc_100/mc_100_4.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-4 text-sm min-w-[1rem]"></i>
+                    <span>Decimals</span>
+                </a>
+                
+                <a href="mc_100/mc_100_5.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-5 text-sm min-w-[1rem]"></i>
+                    <span>Percents</span>
+                </a>
+                
+                <a href="mc_100/mc_100_6.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-6 text-sm min-w-[1rem]"></i>
+                    <span>Measurement</span>
+                </a>
+                
+                <a href="mc_100/mc_100_7.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-7 text-sm min-w-[1rem]"></i>
+                    <span>Algebra</span>
+                </a>
+                
+                <a href="mc_100/mc_100_8.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-8 text-sm min-w-[1rem]"></i>
+                    <span>Problem Solving</span>
+                </a>
+                
+                <a href="mc_100/mc_100_post.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-flag-checkered text-sm min-w-[1rem]"></i>
+                    <span>Post-test</span>
+                </a>
+                
+                <a href="mc_100/mc_100_m.html" class="nav-link flex items-center gap-3 px-8 py-2 text-white/70 hover:text-white text-sm">
+                    <i class="fa-solid fa-chart-bar text-sm min-w-[1rem]"></i>
+                    <span>Metrics</span>
+                </a>
+            </div>
+            
+            <a href="mc_200.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>200</span>
+            </a>
+            
+            <a href="mc_300.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>300</span>
+            </a>
+            
+            <a href="mc_400.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>400</span>
+            </a>
+            
+            <a href="mc_500.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>500</span>
+            </a>
+            
+            <a href="mc_600.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-book text-xl min-w-[1.5rem]"></i>
+                <span>600</span>
+            </a>
+            
+            <a href="mc_100/mc_100_post.html" class="nav-link flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-flag-checkered text-xl min-w-[1.5rem]"></i>
+                <span>Post-test</span>
+            </a>
+        </div>
+        
+    </nav>
+    
+    <!-- Top Right: Avatar, Name, Settings Gear -->
+    <div class="fixed top-4 right-4 z-50 flex items-center gap-3 bg-white/10 backdrop-blur-lg rounded-full p-2 pr-4 border-2 border-white/20">
+        <img id="user-avatar" 
+             src="https://via.placeholder.com/48" 
+             alt="Avatar" 
+             class="w-12 h-12 rounded-full border-2 border-white/30">
+        <span id="username" class="text-white font-semibold">Student</span>
+        <a href="../settings.html" class="text-white/70 hover:text-white transition-colors ml-2">
+            <i class="fa-solid fa-gear text-xl"></i>
+        </a>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+        
+        <!-- Path Header -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-6 border-2 border-white/20">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h1 class="text-4xl font-bold text-white mb-2">Path 100</h1>
+                    <h2 class="text-2xl text-purple-200">Math Foundations</h2>
+                </div>
+                <div class="text-right">
+                    <div class="text-6xl font-bold text-white">100</div>
+                    <div class="text-purple-200">MOMS Target</div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 pt-4">
+                <p class="text-white/90 text-lg">
+                    Build your foundation from kindergarten math to elementary algebra. 
+                    Master whole numbers, fractions, decimals, and basic algebra concepts.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-problems">0</div>
+                <div class="text-purple-200 text-sm">Total Problems</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-first-try">0%</div>
+                <div class="text-purple-200 text-sm">First Try Success</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-grade">--</div>
+                <div class="text-purple-200 text-sm">Current Grade</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-streak">0</div>
+                <div class="text-purple-200 text-sm">Day Streak</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-attempts">0</div>
+                <div class="text-purple-200 text-sm">Total Attempts</div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-white" id="stat-time">0h</div>
+                <div class="text-purple-200 text-sm">Study Time</div>
+            </div>
+        </div>
+        
+        <!-- What You'll Learn -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 mb-6 border-2 border-white/20">
+            <h3 class="text-xl font-bold text-white mb-4">ðŸ“š What You'll Learn</h3>
+            <div class="grid grid-cols-2 gap-4 text-white/90">
+                <div>â€¢ Place Value & Number Systems</div>
+                <div>â€¢ Basic Operations (+, âˆ’, Ã—, Ã·)</div>
+                <div>â€¢ Fractions & Decimals</div>
+                <div>â€¢ Percents & Ratios</div>
+                <div>â€¢ Order of Operations</div>
+                <div>â€¢ Introduction to Algebra</div>
+                <div>â€¢ Variables & Expressions</div>
+                <div>â€¢ Problem Solving Strategies</div>
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex gap-4 mb-6">
+            <a href="mc_100_pt.html" class="flex-1 bg-purple-500 hover:bg-purple-600 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center">
+                ðŸ“ Take Pretest
+            </a>
+            <a href="mc_100/mc_100_1.html" class="flex-1 bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center">
+                ðŸ“– Start Skill Set 1
+            </a>
+        </div>
+        
+        <p class="text-center text-white/60 mb-6 text-sm">
+            Pretest is optional but recommended to identify what you already know
+        </p>
+        
+        <!-- Path Stats -->
+        <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4 border-2 border-white/20 text-center">
+                <div class="text-3xl font-bold text-white">38</div>
+                <div class="text-purple-200">Skills</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4 border-2 border-white/20 text-center">
+                <div class="text-3xl font-bold text-white">8</div>
+                <div class="text-purple-200">Skill Sets</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4 border-2 border-white/20 text-center">
+                <div class="text-3xl font-bold text-white" id="completion-percent">0%</div>
+                <div class="text-purple-200">Complete</div>
+            </div>
+        </div>
+        <!-- Skill Set Progress (Segmented) -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 mb-6 border-2 border-white/20">
+            <div class="flex gap-2 mb-2">
+                <a href="mc_100/mc_100_1.html" class="flex-1 h-12 rounded-lg bg-gray-500 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="mod-1" title="Skill Set 1: Not Started">
+                    1
+                </a>
+                <a href="mc_100/mc_100_2.html" class="flex-1 h-12 rounded-lg bg-gray-500 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="mod-2" title="Skill Set 2: Not Started">
+                    2
+                </a>
+                <a href="mc_100/mc_100_3.html" class="flex-1 h-12 rounded-lg bg-gray-500 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="mod-3" title="Skill Set 3: Not Started">
+                    3
+                </a>
+                <a href="mc_100/mc_100_4.html" class="flex-1 h-12 rounded-lg bg-gray-500 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="mod-4" title="Skill Set 4: Not Started">
+                    4
+                </a>
+            </div>
+            <div class="flex gap-2">
+                <a href="mc_100/mc_100_5.html" class="flex-1 h-12 rounded-lg bg-gray-500 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="mod-5" title="Skill Set 5: Not Started">
+                    5
+                </a>
+                <a href="mc_100/mc_100_6.html" class="flex-1 h-12 rounded-lg bg-gray-500 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="mod-6" title="Skill Set 6: Not Started">
+                    6
+                </a>
+                <a href="mc_100/mc_100_7.html" class="flex-1 h-12 rounded-lg bg-gray-500 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="mod-7" title="Skill Set 7: Not Started">
+                    7
+                </a>
+                <a href="mc_100/mc_100_8.html" class="flex-1 h-12 rounded-lg bg-gray-500 hover:opacity-80 transition flex items-center justify-center text-white font-bold cursor-pointer" id="mod-8" title="Skill Set 8: Not Started">
+                    8
+                </a>
+            </div>
+            <div class="text-white/60 text-sm mt-3 text-center">
+                <span class="inline-block w-3 h-3 bg-gray-400 rounded mr-1"></span> Not Started
+                <span class="inline-block w-3 h-3 bg-yellow-500 rounded mr-1 ml-3"></span> Incomplete
+                <span class="inline-block w-3 h-3 bg-green-500 rounded mr-1 ml-3"></span> Passed
+                <span class="inline-block w-3 h-3 bg-red-500 rounded mr-1 ml-3"></span> Failed
+            </div>
+        </div>
+        <!-- Module Progress (Segmented) -->
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 mb-6 border-2 border-white/20">
+            
+            <div class="space-y-3">
+                <!-- Module 1 -->
+                <div>
+                    <div class="flex justify-between text-white text-sm mb-1">
+                        <span>Skill Set 1: Number Sense</span>
+                        <span class="text-white/70">0/4</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold cursor-pointer hover:opacity-80 transition" onclick="window.location.href='mc_100_1.html'">1</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold cursor-pointer hover:opacity-80 transition" onclick="window.location.href='mc_100_1.html'">2</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold cursor-pointer hover:opacity-80 transition" onclick="window.location.href='mc_100_1.html'">3</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold cursor-pointer hover:opacity-80 transition" onclick="window.location.href='mc_100_1.html'">4</div>
+                    </div>
+                </div>
+                
+                <!-- Module 2 -->
+                <div class="opacity-50">
+                    <div class="flex justify-between text-white text-sm mb-1">
+                        <span>Skill Set 2: Whole Number Operations</span>
+                        <span class="text-white/70">0/5</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">4</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">5</div>
+                    </div>
+                </div>
+                
+                <!-- Module 3 -->
+                <div class="opacity-50">
+                    <div class="flex justify-between text-white text-sm mb-1">
+                        <span>Skill Set 3: Fractions Fundamentals</span>
+                        <span class="text-white/70">0/8</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">4</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">5</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">6</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">7</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">8</div>
+                    </div>
+                </div>
+                
+                <!-- Module 4 -->
+                <div class="opacity-50">
+                    <div class="flex justify-between text-white text-sm mb-1">
+                        <span>Skill Set 4: Decimals Fundamentals</span>
+                        <span class="text-white/70">0/6</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">4</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">5</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">6</div>
+                    </div>
+                </div>
+                
+                <!-- Module 5 -->
+                <div class="opacity-50">
+                    <div class="flex justify-between text-white text-sm mb-1">
+                        <span>Skill Set 5: Percents Basics</span>
+                        <span class="text-white/70">0/4</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">4</div>
+                    </div>
+                </div>
+                
+                <!-- Module 6 -->
+                <div class="opacity-50">
+                    <div class="flex justify-between text-white text-sm mb-1">
+                        <span>Skill Set 6: Measurement & Geometry</span>
+                        <span class="text-white/70">0/4</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">4</div>
+                    </div>
+                </div>
+                
+                <!-- Module 7 -->
+                <div class="opacity-50">
+                    <div class="flex justify-between text-white text-sm mb-1">
+                        <span>Skill Set 7: Introduction to Algebra</span>
+                        <span class="text-white/70">0/4</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">4</div>
+                    </div>
+                </div>
+                
+                <!-- Module 8 -->
+                <div class="opacity-50">
+                    <div class="flex justify-between text-white text-sm mb-1">
+                        <span>Skill Set 8: Problem Solving</span>
+                        <span class="text-white/70">0/3</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="flex-1 h-8 bg-gray-400 rounded flex items-center justify-center text-white text-xs font-bold">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center py-8 mt-8">
+            <div class="text-sm text-purple-200 space-y-2">
+                <p>Version 1.0.0 (Alpha) | Built with â¤ï¸ for learners</p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="../privacy.html" class="hover:text-white underline">Privacy Policy</a>
+                    <span aria-hidden="true">â€¢</span>
+                    <a href="../tos.html" class="hover:text-white underline">Terms of Service</a>
+                    <span aria-hidden="true">â€¢</span>
+                    <a href="../contact.html" class="hover:text-white underline">Contact</a>
+                </div>
+                <p class="text-xs mt-4">Â© 2025 IQ+ Education. Student data protected under FERPA guidelines.</p>
+            </div>
+        </footer>
+        
+    </main>
+    
+    <script type="module">
+        import { auth } from '../firebase_config.js';
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { db } from '../firebase_config.js';
+        
+        // Check auth
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = '../sign.html';
+                return;
+            }
+            
+            // Load user data
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                
+                // Display username
+                const displayName = userData.preferred_name || userData.username || 'Student';
+                document.getElementById('username').textContent = displayName;
+                
+                // Display avatar
+                if (user.photoURL) {
+                    document.getElementById('user-avatar').src = user.photoURL;
+                }
+                
+                // Load progress
+                const progress = userData.progress || {};
+                const path100 = progress['path_100'] || { completed: [] };
+                const completion = Math.round((path100.completed.length / 38) * 100);
+                document.getElementById('completion-percent').textContent = completion + '%';
+                
+                // Color module segments
+                // Gray = not started, Red = failed, Green = complete
+                const modules = path100.modules || {};
+                for (let i = 1; i <= 8; i++) {
+                    const modData = modules[i] || { status: 'not_started' };
+                    const elem = document.getElementById(`mod-${i}`);
+                    
+                    if (modData.status === 'complete') {
+                        elem.classList.remove('bg-gray-500', 'bg-yellow-500', 'bg-red-500');
+                        elem.classList.add('bg-green-500');
+                        elem.title = `Skill Set ${i}: Passed`;
+                    } else if (modData.status === 'failed') {
+                        elem.classList.remove('bg-gray-500', 'bg-yellow-500', 'bg-green-500');
+                        elem.classList.add('bg-red-500');
+                        elem.title = `Skill Set ${i}: Failed - Retry`;
+                    } else if (modData.status === 'incomplete') {
+                        elem.classList.remove('bg-gray-500', 'bg-green-500', 'bg-red-500');
+                        elem.classList.add('bg-yellow-500');
+                        elem.title = `Skill Set ${i}: Incomplete`;
+                    }
+                    // Gray is default (not_started)
+                }
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>
